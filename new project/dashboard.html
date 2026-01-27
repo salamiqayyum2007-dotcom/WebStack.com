@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - WebStack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><a href="index.html">WebStack</a></h1>
+      
+      </div>
+      <nav>
+       
+        <a href="courses.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="exercises.html">Exercises</a>
+        <span style="color: #666;"> | </span>
+        <a href="profile.html">👤 My Profile</a>
+        <a href="index.html" class="auth-btn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1 id="welcome-message" style="color: #333; margin-bottom: 2rem;">Welcome Back, Student! 👋</h1>
+
+    <!-- Stats Overview -->
+    <div class="stats" style="margin-bottom: 3rem;">
+      <div class="stat-card">
+        <h3>12</h3>
+        <p>Courses Enrolled</p>
+      </div>
+      <div class="stat-card">
+        <h3>650</h3>
+        <p>Points Earned</p>
+      </div>
+      <div class="stat-card">
+        <h3>8</h3>
+        <p>Certificates</p>
+      </div>
+      <div class="stat-card">
+        <h3>42%</h3>
+        <p>Progress</p>
+      </div>
+    </div>
+
+    <!-- Learning Progress -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <h2 style="color: #333; margin-bottom: 1.5rem;">📚 My Learning Progress</h2>
+      
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>HTML Fundamentals</span>
+          <span style="color: #2563eb; font-weight: bold;">75%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
+          <div style="background: #2563eb; height: 100%; width: 75%; border-radius: 4px;"></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>CSS Styling & Layout</span>
+          <span style="color: #2563eb; font-weight: bold;">60%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
+          <div style="background: #2563eb; height: 100%; width: 60%; border-radius: 4px;"></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>JavaScript Basics</span>
+          <span style="color: #2563eb; font-weight: bold;">40%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
+          <div style="background: #2563eb; height: 100%; width: 40%; border-radius: 4px;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>React Fundamentals</span>
+          <span style="color: #2563eb; font-weight: bold;">25%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
+          <div style="background: #2563eb; height: 100%; width: 25%; border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended Next Steps -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <h2 style="color: #333; margin-bottom: 1.5rem;">🎯 Recommended Next Steps</h2>
+      
+      <div class="course-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
+          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Complete JavaScript Basics</h3>
+          <p style="color: #666; margin-bottom: 1rem;">You're 40% through. Just 4 lessons remaining!</p>
+          <a class="btn btn-small" href="#" style="margin-top: 0;">Continue</a>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
+          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Start React Course</h3>
+          <p style="color: #666; margin-bottom: 1rem;">You're ready! Build modern UIs with React.</p>
+          <a class="btn btn-small" href="#" style="margin-top: 0;">Enroll</a>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
+          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Try New Exercises</h3>
+          <p style="color: #666; margin-bottom: 1rem;">Practice your JavaScript skills with 5 new challenges.</p>
+          <a class="btn btn-small" href="#" style="margin-top: 0;">Practice</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <h2 style="color: #333; margin-bottom: 1.5rem;">📊 Recent Activity</h2>
+      
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 1.5rem;">✅</span>
+          <div>
+            <strong>Completed Exercise</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 0;">Successfully completed "JavaScript - Number Guessing Game" - +50 points</p>
+          </div>
+          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">Today</span>
+        </li>
+
+        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 1.5rem;">📖</span>
+          <div>
+            <strong>Completed Lesson</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 0;">Completed lesson 8 of "CSS Styling & Layout" course</p>
+          </div>
+          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">Yesterday</span>
+        </li>
+
+        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 1.5rem;">🏆</span>
+          <div>
+            <strong>Earned Certificate</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 0;">Completed and earned certificate in "HTML Fundamentals"</p>
+          </div>
+          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">3 days ago</span>
+        </li>
+
+        <li style="padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 1.5rem;">🎯</span>
+          <div>
+            <strong>Enrolled in Course</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 0;">Enrolled in "CSS Styling & Layout" course</p>
+          </div>
+          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">5 days ago</span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="exercises.html">Exercises</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WebStack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load user data on dashboard
+    function loadDashboardData() {
+      const storedData = localStorage.getItem('userData');
+      
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        document.getElementById('welcome-message').textContent = `Welcome Back, ${userData.fullname}! 👋`;
+      } else {
+        alert('Please log in or register first!');
+        window.location.href = 'register.html';
+      }
+    }
+
+    window.addEventListener('load', loadDashboardData);
+  </script>
+</body>
+</html>
