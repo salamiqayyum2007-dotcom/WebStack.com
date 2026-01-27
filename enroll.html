@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enroll in Course - WebStack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><a href="index.html">WebStack</a></h1>
+        <p>Learn Web Development</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="exercises.html">Exercises</a>
+        <a href="login.html" class="auth-btn">Login</a>
+        <a href="register.html" class="auth-btn register-btn">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 3rem 2rem; text-align: center;">
+      <h1 style="font-size: 2rem; margin-bottom: 1rem;">Complete Your Enrollment</h1>
+      <p style="opacity: 0.95;">Choose your course and get started today</p>
+    </section>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+        
+        <!-- Course Selection -->
+        <div>
+          <h2 style="color: #333; margin-bottom: 1.5rem;">Select Your Course</h2>
+          
+          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;">
+            <form onsubmit="handleEnrollment(event)">
+              <div class="form-group" style="margin: 0;">
+                <label for="course-select" style="padding: 1.5rem 1.5rem 0.5rem 1.5rem; display: block;">Course</label>
+                <select id="course-select" name="course" required onchange="updateCourseDetails()" style="margin: 0 1.5rem 1.5rem 1.5rem; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; width: calc(100% - 3rem);">
+                  <option value="">-- Select a Course --</option>
+                  <option value="html">HTML Fundamentals - $29</option>
+                  <option value="css">CSS Styling & Layout - $49</option>
+                  <option value="javascript">JavaScript - Interactive Web - $59</option>
+                  <option value="react">React - Modern Framework - $79</option>
+                  <option value="python">Python - Backend Development - $69</option>
+                  <option value="tools">Web Development Tools - $39</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label for="course-duration" style="padding: 0.5rem 1.5rem 0; display: block; color: #666; font-size: 0.85rem;">Duration</label>
+                <p id="course-duration" style="padding: 0 1.5rem; margin: 0.5rem 0 1.5rem 0; color: #333; font-weight: 500;">Select a course</p>
+              </div>
+
+              <hr style="margin: 0; border: none; border-top: 1px solid #e0e0e0;">
+
+              <div style="padding: 1.5rem;">
+                <label for="user-email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Email Address</label>
+                <input type="email" id="user-email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1.5rem;">
+
+                <label for="payment-method" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Payment Method</label>
+                <select id="payment-method" name="payment" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1.5rem;">
+                  <option value="">-- Select Payment Method --</option>
+                  <option value="credit">Credit Card</option>
+                  <option value="debit">Debit Card</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="google">Google Pay</option>
+                </select>
+
+                <label style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+                  <input type="checkbox" id="terms-agree" name="terms" required style="width: auto; margin-right: 0.5rem; margin-top: 0.25rem;">
+                  <span style="color: #666; font-size: 0.9rem;">I agree to the <a href="terms.html" style="color: #2563eb; text-decoration: none;">Terms of Service</a> and <a href="privacy.html" style="color: #2563eb; text-decoration: none;">Privacy Policy</a></span>
+                </label>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Complete Enrollment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Enrollment Summary -->
+        <div>
+          <h2 style="color: #333; margin-bottom: 1.5rem;">Enrollment Summary</h2>
+          
+          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 2rem; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
+              <div>
+                <h3 id="summary-course" style="color: #333; margin: 0 0 0.5rem 0;">HTML Fundamentals</h3>
+                <p id="summary-duration" style="color: #666; margin: 0; font-size: 0.9rem;">4 weeks • 20 lessons</p>
+              </div>
+              <div style="text-align: right;">
+                <p id="summary-price" style="color: #2563eb; font-size: 1.5rem; font-weight: bold; margin: 0;">$29</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: #333; margin-bottom: 1rem;">What's Included:</h4>
+              <ul style="color: #666; margin: 0; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">📺 Video lessons and tutorials</li>
+                <li style="margin-bottom: 0.5rem;">📝 Downloadable resources and code files</li>
+                <li style="margin-bottom: 0.5rem;">✅ Practice exercises and quizzes</li>
+                <li style="margin-bottom: 0.5rem;">🏆 Certificate of completion</li>
+                <li style="margin-bottom: 0.5rem;">💬 Community forum access</li>
+                <li>📱 Mobile app access</li>
+              </ul>
+            </div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e0e0e0;">
+
+            <div style="background: #f9fafb; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="color: #666;">Subtotal</span>
+                <span id="subtotal" style="color: #333; font-weight: 500;">$29</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="color: #666;">Tax</span>
+                <span id="tax" style="color: #333; font-weight: 500;">$0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid #e0e0e0;">
+                <span style="color: #333; font-weight: bold;">Total</span>
+                <span id="total" style="color: #2563eb; font-weight: bold; font-size: 1.2rem;">$29</span>
+              </div>
+            </div>
+
+            <div style="background: #e0e7ff; border-left: 4px solid #2563eb; padding: 1rem; border-radius: 4px;">
+              <p style="color: #0c4a6e; margin: 0; font-size: 0.9rem;">
+                <strong>💡 Money-back guarantee:</strong> Not satisfied? Get a full refund within 30 days.
+              </p>
+            </div>
+          </div>
+
+          <!-- Requirements -->
+          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 2rem;">
+            <h4 style="color: #333; margin-bottom: 1rem;">Requirements:</h4>
+            <ul style="color: #666; margin: 0; padding-left: 1.5rem;">
+              <li style="margin-bottom: 0.5rem;">✓ Internet connection</li>
+              <li style="margin-bottom: 0.5rem;">✓ Web browser (Chrome, Firefox, Safari, Edge)</li>
+              <li style="margin-bottom: 0.5rem;">✓ Code editor (VS Code recommended)</li>
+              <li>✓ 5-10 hours per week commitment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="exercises.html">Exercises</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WebStack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const courseDetails = {
+      html: { name: 'HTML Fundamentals', duration: '4 weeks • 20 lessons', price: 29 },
+      css: { name: 'CSS Styling & Layout', duration: '6 weeks • 30 lessons', price: 49 },
+      javascript: { name: 'JavaScript - Interactive Web', duration: '8 weeks • 40 lessons', price: 59 },
+      react: { name: 'React - Modern Framework', duration: '8 weeks • 35 lessons', price: 79 },
+      python: { name: 'Python - Backend Development', duration: '10 weeks • 50 lessons', price: 69 },
+      tools: { name: 'Web Development Tools', duration: '4 weeks • 18 lessons', price: 39 }
+    };
+
+    function updateCourseDetails() {
+      const courseSelect = document.getElementById('course-select').value;
+      
+      if (courseSelect && courseDetails[courseSelect]) {
+        const course = courseDetails[courseSelect];
+        document.getElementById('course-duration').textContent = course.duration;
+        document.getElementById('summary-course').textContent = course.name;
+        document.getElementById('summary-duration').textContent = course.duration;
+        document.getElementById('summary-price').textContent = '$' + course.price;
+        document.getElementById('subtotal').textContent = '$' + course.price;
+        document.getElementById('total').textContent = '$' + course.price;
+      }
+    }
+
+    function handleEnrollment(event) {
+      event.preventDefault();
+      const course = document.getElementById('course-select').value;
+      const email = document.getElementById('user-email').value;
+      
+      if (course && email) {
+        const courseName = courseDetails[course].name;
+        alert(`🎉 Enrollment Successful!\n\nCourse: ${courseName}\nEmail: ${email}\n\nA confirmation email has been sent to you. You can now start learning!`);
+        
+        // In a real app, send this to backend
+        setTimeout(() => {
+          window.location.href = 'courses.html';
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - WebStack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><a href="index.html">WebStack</a></h1>
+    
+      </div>
+      <nav>
+        <a href="login.html" class="auth-btn active">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h1 style="text-align: center; color: #333; margin-bottom: 2rem;">Welcome Back</h1>
+      
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+          <small>We'll never share your email.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+          <small>Case sensitive. Must be at least 8 characters.</small>
+        </div>
+
+        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+          <label style="display: flex; align-items: center; margin: 0;">
+            <input type="checkbox" id="remember" name="remember" style="width: auto; margin-right: 0.5rem;">
+            Remember me
+          </label>
+          <a href="#forgot" style="color: #2563eb; text-decoration: none; font-size: 0.9rem;">Forgot password?</a>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Login</button>
+        </div>
+      </form>
+
+      <div class="form-footer">
+        Don't have an account? <a href="register.html">Create an account</a>
+      </div>
+
+      <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; text-align: center;">
+        <p style="color: #666; margin-bottom: 1rem;">Or continue with</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <button type="button" class="btn" style="background-color: #f0f0f0; color: #333; flex: 1; max-width: 150px;">Google</button>
+          <button type="button" class="btn" style="background-color: #f0f0f0; color: #333; flex: 1; max-width: 150px;">GitHub</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="exercises.html">Exercises</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WebStack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const remember = document.getElementById('remember').checked;
+      
+      // Get stored user data
+      const storedData = localStorage.getItem('userData');
+      
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        
+        // Verify credentials
+        if (userData.email === email && userData.password === password) {
+          // Update login status
+          userData.isLoggedIn = true;
+          userData.rememberMe = remember;
+          localStorage.setItem('userData', JSON.stringify(userData));
+          
+          alert(`Welcome back, ${userData.fullname}!`);
+          
+          // Redirect to dashboard
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 500);
+        } else {
+          alert('Invalid email or password!');
+        }
+      } else {
+        alert('No account found. Please register first!');
+      }
+    }
+  </script>
+</body>
+</html>
