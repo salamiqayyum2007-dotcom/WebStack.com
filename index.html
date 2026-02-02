@@ -13,7 +13,12 @@
         <h1><a href="index.html">WebStack</a></h1>
        
       </div>
-      <nav>
+      <button class="hamburger-menu" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-menu">
         <a href="index.html" class="active">Home</a>
         <a href="login.html" class="auth-btn">Login</a>
         <a href="register.html" class="auth-btn register-btn">Sign Up</a>
@@ -159,5 +164,22 @@
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>

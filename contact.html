@@ -13,21 +13,26 @@
         <h1><a href="index.html">WebStack</a></h1>
        
       </div>
- 
-    </div>
+      <button class="hamburger-menu" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-menu">
+      </nav>
   </header>
 
   <main>
-    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 4rem 2rem; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Get In Touch</h1>
-      <p style="font-size: 1.1rem; opacity: 0.95;">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: clamp(1.5rem, 4vh, 4rem) clamp(1rem, 2vw, 2rem); text-align: center;">
+      <h1 style="font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 1rem;">Get In Touch</h1>
+      <p style="font-size: clamp(0.95rem, 2.5vw, 1.1rem); opacity: 0.95;">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
     </section>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(1.5rem, 4vh, 4rem) clamp(1rem, 2vw, 2rem);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
         <!-- Contact Form -->
-        <div>
-          <h2 style="color: #333; margin-bottom: 2rem;">Send us a Message</h2>
+        <div style="min-width: 0;">
+          <h2 style="color: #333; margin-bottom: 2rem; font-size: clamp(1.3rem, 4vw, 1.8rem);">Send us a Message</h2>
           <form onsubmit="handleContact(event)">
             <div class="form-group">
               <label for="contact-name">Your Name</label>
@@ -62,8 +67,8 @@
         </div>
 
         <!-- Contact Info -->
-        <div>
-          <h2 style="color: #333; margin-bottom: 2rem;">Contact Information</h2>
+        <div style="min-width: 0;">
+          <h2 style="color: #333; margin-bottom: 2rem; font-size: clamp(1.3rem, 4vw, 1.8rem);">Contact Information</h2>
 
           <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 2rem;">
             <h3 style="color: #2563eb; margin-top: 0;">📧 Email</h3>
@@ -97,28 +102,28 @@
       </div>
 
       <!-- FAQ Section -->
-      <div style="background: #f9fafb; padding: 3rem 2rem; border-radius: 8px; margin-bottom: 4rem;">
-        <h2 style="color: #333; margin-bottom: 2rem; text-align: center;">Frequently Asked Questions</h2>
+      <div style="background: #f9fafb; padding: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 2vw, 2rem); border-radius: 8px; margin-bottom: 4rem;">
+        <h2 style="color: #333; margin-bottom: 2rem; text-align: center; font-size: clamp(1.3rem, 4vw, 1.8rem);">Frequently Asked Questions</h2>
         
         <div style="max-width: 800px; margin: 0 auto;">
-          <details style="margin-bottom: 1rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <summary style="color: #2563eb; font-weight: 500; font-size: 1.1rem;">What is your response time?</summary>
-            <p style="color: #666; margin: 1rem 0 0 0;">We typically respond to inquiries within 24 hours during business days. For urgent matters, please call us.</p>
+          <details style="margin-bottom: 1rem; padding: clamp(1rem, 2vw, 1.5rem); background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <summary style="color: #2563eb; font-weight: 500; font-size: clamp(0.95rem, 2vw, 1.1rem);">What is your response time?</summary>
+            <p style="color: #666; margin: 1rem 0 0 0; font-size: clamp(0.85rem, 1.5vw, 0.95rem);">We typically respond to inquiries within 24 hours during business days. For urgent matters, please call us.</p>
           </details>
 
-          <details style="margin-bottom: 1rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <summary style="color: #2563eb; font-weight: 500; font-size: 1.1rem;">Do you offer refunds?</summary>
-            <p style="color: #666; margin: 1rem 0 0 0;">Yes, we offer a 30-day money-back guarantee for all courses. No questions asked.</p>
+          <details style="margin-bottom: 1rem; padding: clamp(1rem, 2vw, 1.5rem); background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <summary style="color: #2563eb; font-weight: 500; font-size: clamp(0.95rem, 2vw, 1.1rem);">Do you offer refunds?</summary>
+            <p style="color: #666; margin: 1rem 0 0 0; font-size: clamp(0.85rem, 1.5vw, 0.95rem);">Yes, we offer a 30-day money-back guarantee for all courses. No questions asked.</p>
           </details>
 
-          <details style="margin-bottom: 1rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <summary style="color: #2563eb; font-weight: 500; font-size: 1.1rem;">Can I download course materials?</summary>
-            <p style="color: #666; margin: 1rem 0 0 0;">Yes, all course materials including videos, code files, and resources can be downloaded for offline access.</p>
+          <details style="margin-bottom: 1rem; padding: clamp(1rem, 2vw, 1.5rem); background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <summary style="color: #2563eb; font-weight: 500; font-size: clamp(0.95rem, 2vw, 1.1rem);">Can I download course materials?</summary>
+            <p style="color: #666; margin: 1rem 0 0 0; font-size: clamp(0.85rem, 1.5vw, 0.95rem);">Yes, all course materials including videos, code files, and resources can be downloaded for offline access.</p>
           </details>
 
-          <details style="margin-bottom: 1rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <summary style="color: #2563eb; font-weight: 500; font-size: 1.1rem;">Is there a community forum?</summary>
-            <p style="color: #666; margin: 1rem 0 0 0;">Yes! Join our active community forum to connect with other learners, ask questions, and share projects.</p>
+          <details style="margin-bottom: 1rem; padding: clamp(1rem, 2vw, 1.5rem); background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <summary style="color: #2563eb; font-weight: 500; font-size: clamp(0.95rem, 2vw, 1.1rem);">Is there a community forum?</summary>
+            <p style="color: #666; margin: 1rem 0 0 0; font-size: clamp(0.85rem, 1.5vw, 0.95rem);">Yes! Join our active community forum to connect with other learners, ask questions, and share projects.</p>
           </details>
         </div>
       </div>
@@ -145,6 +150,23 @@
       // Reset form
       event.target.reset();
     }
+  </script>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>

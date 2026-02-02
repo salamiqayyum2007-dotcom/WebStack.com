@@ -37,7 +37,7 @@
             <div style="padding: 2rem;">
               <h3 style="color: #333; margin: 0 0 0.5rem 0;">Salami AbdulQayyum Aderinola</h3>
               <p style="color: #2563eb; margin: 0 0 1rem 0; font-weight: 500;">CEO & Co-Founder</p>
-              <p style="color: #666; margin: 0; font-size: 0.9rem;">12+ years in web development and online education. Former engineering lead at a Fortune 500 tech company.</p>
+              <p style="color: #666; margin: 0; font-size: 0.9rem;">2+ years in web development and online education. Former engineering lead at a Fortune 500 tech company.</p>
               <div style="display: flex; gap: 1rem; margin-top: 1rem;">
                 <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">Twitter</a>
                 <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
@@ -145,5 +145,22 @@
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
