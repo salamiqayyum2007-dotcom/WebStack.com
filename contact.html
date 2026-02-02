@@ -9,6 +9,13 @@
     const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   </script>
+  <!-- EmailJS Library -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY_HERE");
+    })();
+  </script>
 </head>
 <body>
   <header>
@@ -37,7 +44,12 @@
         <!-- Contact Form -->
         <div style="min-width: 0;">
           <h2 style="color: #333; margin-bottom: 2rem; font-size: clamp(1.3rem, 4vw, 1.8rem);">Send us a Message</h2>
-          <form onsubmit="handleContact(event)">
+          <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContact(event)">
+            <input type="hidden" name="access_key" value="6cf43cf4-d4fa-4b1f-85b6-62fad25893a9">
+            <input type="hidden" name="redirect" value="https://yourwebsite.com/success.html">
+            <input type="hidden" name="subject" id="email-subject">
+            <input type="hidden" name="from_name" value="WebStack Contact Form">
+            <input type="hidden" name="to_email" value="webstack333@gmail.com">
             <div class="form-group">
               <label for="contact-name">Your Name</label>
               <input type="text" id="contact-name" name="name" required placeholder="Enter your name">
@@ -144,15 +156,45 @@
   <script>
     function handleContact(event) {
       event.preventDefault();
+      
       const name = document.getElementById('contact-name').value;
       const email = document.getElementById('contact-email').value;
-      const subject = document.getElementById('contact-subject').value;
+      const subjectSelect = document.getElementById('contact-subject').value;
       const message = document.getElementById('contact-message').value;
+      const form = event.target;
       
-      alert(`Thank you for reaching out, ${name}!\n\nWe've received your message and will get back to you at ${email} shortly.`);
+      // Set the email subject field
+      document.getElementById('email-subject').value = `WebStack Contact: ${subjectSelect}`;
       
-      // Reset form
-      event.target.reset();
+      // Create FormData for Web3Forms
+      const formData = new FormData(form);
+      
+      // Disable submit button
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      
+      // Send via Web3Forms API
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        if (response.ok) {
+          alert('✅ Message Successfully Sent!\n\nThank you for reaching out, ' + name + '!\n\nWe\'ve received your message and will get back to you at ' + email + ' shortly.');
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+        alert('❌ Error Sending Message\n\nThere was an issue sending your message. Please try again later.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
     }
   </script>
 
