@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - WebStack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><a href="index.html">WebStack</a></h1>
+     
+      </div>
+      <nav>
+        <a href="courses.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="exercises.html">Exercises</a>
+        <span style="color: #666;"> | </span>
+        <a href="profile.html" class="active">👤 My Profile</a>
+        <a href="index.html" class="auth-btn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 3rem;">
+      <!-- Sidebar -->
+      <aside style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); height: fit-content;">
+        <!-- Profile Header -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);">
+            👤
+          </div>
+          <h2 id="profile-fullname" style="color: #333; margin: 0 0 0.5rem 0;">John Developer</h2>
+          <p id="profile-email" style="color: #666; margin: 0; font-size: 0.9rem;">john.developer@example.com</p>
+          <p id="profile-joined" style="color: #2563eb; margin: 0.5rem 0 0 0; font-weight: bold;">Member Since Jan 2026</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div style="border-top: 1px solid #e0e0e0; padding-top: 1.5rem;">
+            <div style="margin-bottom: 1.5rem;">
+              <p style="color: #666; margin: 0; font-size: 0.85rem;">Level</p>
+              <h3 style="color: #2563eb; margin: 0.5rem 0 0 0;">Intermediate</h3>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <p style="color: #666; margin: 0; font-size: 0.85rem;">Total Points</p>
+              <h3 style="color: #2563eb; margin: 0.5rem 0 0 0;">850 pts</h3>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <p style="color: #666; margin: 0; font-size: 0.85rem;">Streak</p>
+              <h3 style="color: #2563eb; margin: 0.5rem 0 0 0;">🔥 12 days</h3>
+            </div>
+            <div>
+              <p style="color: #666; margin: 0; font-size: 0.85rem;">Rank</p>
+              <h3 style="color: #2563eb; margin: 0.5rem 0 0 0;">Top 5%</h3>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div style="border-top: 1px solid #e0e0e0; padding-top: 1.5rem; margin-top: 1.5rem;">
+          <a href="#overview" class="profile-tab active" onclick="switchTab(event, 'overview')" style="display: block; padding: 0.75rem 0; color: #2563eb; text-decoration: none; border-bottom: 2px solid #2563eb; font-weight: 500; cursor: pointer;">📊 Overview</a>
+          <a href="#achievements" class="profile-tab" onclick="switchTab(event, 'achievements')" style="display: block; padding: 0.75rem 0; color: #666; text-decoration: none; margin-top: 0.5rem; font-weight: 500; cursor: pointer;">🏆 Achievements</a>
+          <a href="#settings" class="profile-tab" onclick="switchTab(event, 'settings')" style="display: block; padding: 0.75rem 0; color: #666; text-decoration: none; margin-top: 0.5rem; font-weight: 500; cursor: pointer;">⚙️ Settings</a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        
+        <!-- Overview Tab -->
+        <div id="overview-tab" class="profile-content-tab">
+          <h2 style="color: #333; margin-bottom: 2rem;">📊 Profile Overview</h2>
+
+          <!-- Personal Info -->
+          <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Personal Information</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+              <div>
+                <label style="color: #666; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Full Name</label>
+                <p id="info-fullname" style="color: #333; font-weight: 500; margin: 0;">John Developer</p>
+              </div>
+              <div>
+                <label style="color: #666; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Email</label>
+                <p id="info-email" style="color: #333; font-weight: 500; margin: 0;">john.developer@example.com</p>
+              </div>
+              <div>
+                <label style="color: #666; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Location</label>
+                <p id="info-location" style="color: #333; font-weight: 500; margin: 0;">San Francisco, CA</p>
+              </div>
+              <div>
+                <label style="color: #666; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Joined</label>
+                <p id="info-joined" style="color: #333; font-weight: 500; margin: 0;">January 15, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Stats -->
+          <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Learning Statistics</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+              <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
+                <p style="color: #666; margin: 0 0 0.5rem 0; font-size: 0.9rem;">Courses Completed</p>
+                <h3 style="color: #2563eb; margin: 0; font-size: 1.8rem;">8</h3>
+              </div>
+              <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
+                <p style="color: #666; margin: 0 0 0.5rem 0; font-size: 0.9rem;">Exercises Completed</p>
+                <h3 style="color: #2563eb; margin: 0; font-size: 1.8rem;">42</h3>
+              </div>
+              <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
+                <p style="color: #666; margin: 0 0 0.5rem 0; font-size: 0.9rem;">Certificates Earned</p>
+                <h3 style="color: #2563eb; margin: 0; font-size: 1.8rem;">8</h3>
+              </div>
+              <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
+                <p style="color: #666; margin: 0 0 0.5rem 0; font-size: 0.9rem;">Total Study Hours</p>
+                <h3 style="color: #2563eb; margin: 0; font-size: 1.8rem;">156h</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div style="padding-bottom: 2rem;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Skills & Expertise</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">HTML5</span>
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">CSS3</span>
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">JavaScript</span>
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">React</span>
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Responsive Design</span>
+              <span style="background: #e0e7ff; color: #2563eb; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">API Integration</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements Tab -->
+        <div id="achievements-tab" class="profile-content-tab" style="display: none;">
+          <h2 style="color: #333; margin-bottom: 2rem;">🏆 Achievements & Badges</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem;">
+            <!-- Badge 1 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #fbbf24;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏅</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">HTML Master</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">Completed all HTML lessons</p>
+            </div>
+
+            <!-- Badge 2 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #fbbf24;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎨</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">CSS Expert</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">Mastered CSS styling & layouts</p>
+            </div>
+
+            <!-- Badge 3 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #fbbf24;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚡</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">JavaScript Pro</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">Advanced JS knowledge</p>
+            </div>
+
+            <!-- Badge 4 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #60a5fa;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🚀</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">Quick Learner</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">Completed 5 courses in 30 days</p>
+            </div>
+
+            <!-- Badge 5 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #60a5fa;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎯</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">Exercise Champion</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">Perfect score on 10+ exercises</p>
+            </div>
+
+            <!-- Badge 6 -->
+            <div style="text-align: center; padding: 1.5rem; background: #f9fafb; border-radius: 8px; border: 2px solid #60a5fa;">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔥</div>
+              <h4 style="color: #333; margin: 0 0 0.5rem 0;">On Fire</h4>
+              <p style="color: #666; font-size: 0.85rem; margin: 0;">12-day learning streak</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 4px;">
+            <p style="color: #0c4a6e; margin: 0; font-weight: 500;">💡 Keep learning to unlock more badges!</p>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="profile-content-tab" style="display: none;">
+          <h2 style="color: #333; margin-bottom: 2rem;">⚙️ Settings</h2>
+
+          <!-- Account Settings -->
+          <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Account Settings</h3>
+            <form onsubmit="handleSettingsSave(event)">
+              <div class="form-group">
+                <label for="display-name">Display Name</label>
+                <input type="text" id="display-name" placeholder="Your display name">
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" placeholder="Tell us about yourself..." style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; min-height: 100px;"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Your location">
+              </div>
+
+              <div class="form-group">
+                <label for="website">Website/Portfolio</label>
+                <input type="url" id="website" placeholder="https://yourwebsite.com">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Privacy Settings -->
+          <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Privacy & Notifications</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f9fafb; border-radius: 4px;">
+              <div>
+                <p style="margin: 0; font-weight: 500; color: #333;">Email Notifications</p>
+                <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">Get updates on courses and achievements</p>
+              </div>
+              <label style="position: relative; width: 50px; height: 26px; display: block;">
+                <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2563eb; border-radius: 26px; transition: 0.3s; display: flex; align-items: center; padding: 0 3px;">
+                  <span style="position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: 0.3s;"></span>
+                </span>
+              </label>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f9fafb; border-radius: 4px;">
+              <div>
+                <p style="margin: 0; font-weight: 500; color: #333;">Marketing Emails</p>
+                <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">News about new features and promotions</p>
+              </div>
+              <label style="position: relative; width: 50px; height: 26px; display: block;">
+                <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
+                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ddd; border-radius: 26px; transition: 0.3s; display: flex; align-items: center; padding: 0 3px;">
+                  <span style="position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: 0.3s;"></span>
+                </span>
+              </label>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f9fafb; border-radius: 4px;">
+              <div>
+                <p style="margin: 0; font-weight: 500; color: #333;">Profile Visibility</p>
+                <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">Show profile to other users</p>
+              </div>
+              <label style="position: relative; width: 50px; height: 26px; display: block;">
+                <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #2563eb; border-radius: 26px; transition: 0.3s; display: flex; align-items: center; padding: 0 3px;">
+                  <span style="position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: 0.3s;"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div>
+            <h3 style="color: #ef4444; margin-bottom: 1.5rem;">⚠️ Danger Zone</h3>
+            
+            <div style="padding: 1.5rem; background: #fef2f2; border: 2px solid #fecaca; border-radius: 8px;">
+              <h4 style="color: #991b1b; margin: 0 0 1rem 0;">Reset Password</h4>
+              <p style="color: #7f1d1d; margin: 0 0 1rem 0;">Send a password reset email to your registered email address.</p>
+              <button type="button" class="btn" style="background-color: #f87171; color: white; margin-top: 0;">Send Reset Email</button>
+            </div>
+
+            <div style="padding: 1.5rem; background: #fef2f2; border: 2px solid #fecaca; border-radius: 8px; margin-top: 1.5rem;">
+              <h4 style="color: #991b1b; margin: 0 0 1rem 0;">Delete Account</h4>
+              <p style="color: #7f1d1d; margin: 0 0 1rem 0;">Permanently delete your account and all associated data. This action cannot be undone.</p>
+              <button type="button" class="btn" style="background-color: #dc2626; color: white; margin-top: 0;" onclick="alert('Are you sure? This will permanently delete your account.')">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="exercises.html">Exercises</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WebStack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load user data from localStorage
+    function loadUserData() {
+      const storedData = localStorage.getItem('userData');
+      
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        
+        // Update profile header
+        document.getElementById('profile-fullname').textContent = userData.fullname;
+        document.getElementById('profile-email').textContent = userData.email;
+        document.getElementById('profile-joined').textContent = `Member Since ${userData.joinedDate}`;
+        
+        // Update personal information section
+        document.getElementById('info-fullname').textContent = userData.fullname;
+        document.getElementById('info-email').textContent = userData.email;
+        document.getElementById('info-location').textContent = userData.location || 'Not specified';
+        document.getElementById('info-joined').textContent = userData.joinedDate;
+        
+        // Update settings form
+        document.getElementById('display-name').value = userData.fullname;
+        document.getElementById('location').value = userData.location || '';
+        document.getElementById('bio').value = userData.bio || '';
+        document.getElementById('website').value = userData.website || '';
+      } else {
+        // If no user data, show message and redirect
+        alert('Please log in or register first!');
+        window.location.href = 'register.html';
+      }
+    }
+
+    // Load user data when page loads
+    window.addEventListener('load', loadUserData);
+
+    function switchTab(event, tabName) {
+      event.preventDefault();
+      
+      // Hide all tabs
+      const tabs = document.querySelectorAll('.profile-content-tab');
+      tabs.forEach(tab => tab.style.display = 'none');
+      
+      // Remove active class from all tab links
+      const tabLinks = document.querySelectorAll('.profile-tab');
+      tabLinks.forEach(link => {
+        link.style.color = '#666';
+        link.style.borderBottom = 'none';
+      });
+      
+      // Show selected tab
+      const tabId = tabName + '-tab';
+      document.getElementById(tabId).style.display = 'block';
+      
+      // Add active class to clicked tab link
+      event.target.style.color = '#2563eb';
+      event.target.style.borderBottom = '2px solid #2563eb';
+    }
+
+    function handleSettingsSave(event) {
+      event.preventDefault();
+      
+      // Get updated data
+      const displayName = document.getElementById('display-name').value;
+      const location = document.getElementById('location').value;
+      const bio = document.getElementById('bio').value;
+      const website = document.getElementById('website').value;
+      
+      // Get stored data
+      const storedData = localStorage.getItem('userData');
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        
+        // Update user data
+        userData.fullname = displayName;
+        userData.location = location;
+        userData.bio = bio;
+        userData.website = website;
+        
+        // Save back to localStorage
+        localStorage.setItem('userData', JSON.stringify(userData));
+        
+        // Update profile header
+        document.getElementById('profile-fullname').textContent = displayName;
+        document.getElementById('info-fullname').textContent = displayName;
+        
+        alert('Settings saved successfully!');
+      }
+    }
+  </script>
+</body>
+</html>
