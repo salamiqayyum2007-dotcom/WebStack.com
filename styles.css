@@ -880,3 +880,161 @@ footer {
     font-size: 2.2rem;
   }
 }
+
+/* Dark Mode Theme */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-color: #444444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+html[data-theme="dark"] main {
+  background-color: var(--bg-secondary);
+}
+
+html[data-theme="dark"] nav a {
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] nav a:hover {
+  color: #60a5fa;
+}
+
+html[data-theme="dark"] .content > div > aside,
+html[data-theme="dark"] .content > div > div,
+html[data-theme="dark"] main > div > aside,
+html[data-theme="dark"] main > div > div {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 2px 8px var(--shadow-color) !important;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] label,
+html[data-theme="dark"] span {
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .form-group label {
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group select,
+html[data-theme="dark"] .form-group textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .form-group input:focus,
+html[data-theme="dark"] .form-group select:focus,
+html[data-theme="dark"] .form-group textarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+html[data-theme="dark"] footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] footer a {
+  color: #60a5fa;
+}
+
+html[data-theme="dark"] footer a:hover {
+  color: #93c5fd;
+}
+
+html[data-theme="dark"] button:not(.theme-toggle-btn) {
+  background-color: #2563eb;
+  color: white;
+}
+
+html[data-theme="dark"] button:not(.theme-toggle-btn):hover {
+  background-color: #1d4ed8;
+}
+
+html[data-theme="dark"] .auth-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+html[data-theme="dark"] .profile-tab {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .profile-tab.active {
+  color: #60a5fa !important;
+  border-bottom-color: #60a5fa !important;
+}
+
+html[data-theme="dark"] section {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] div[style*="background: white"],
+html[data-theme="dark"] div[style*="background:white"] {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] div[style*="background: #f9fafb"],
+html[data-theme="dark"] div[style*="background:#f9fafb"] {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+html[data-theme="dark"] input[type="checkbox"] {
+  accent-color: #2563eb;
+}
+
+html[data-theme="dark"] select {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}

@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Profile - WebStack</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
 </head>
 <body>
   <header>
@@ -35,12 +39,19 @@
       <aside style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); height: fit-content;">
         <!-- Profile Header -->
         <div style="text-align: center; margin-bottom: 2rem;">
-          <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);">
-            👤
+          <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 1rem;">
+            <div id="profile-avatar" style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); overflow: hidden;">
+              👤
+            </div>
+            <label for="profile-pic-upload" style="position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; font-size: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: background-color 0.3s; border: 2px solid white;">
+              📷
+            </label>
+            <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
           </div>
           <h2 id="profile-fullname" style="color: #333; margin: 0 0 0.5rem 0;">John Developer</h2>
           <p id="profile-email" style="color: #666; margin: 0; font-size: 0.9rem;">john.developer@example.com</p>
           <p id="profile-joined" style="color: #2563eb; margin: 0.5rem 0 0 0; font-weight: bold;">Member Since Jan 2026</p>
+          <p style="color: #666; margin: 0.75rem 0 0 0; font-size: 0.85rem; cursor: pointer;" onclick="document.getElementById('profile-pic-upload').click();">📷 Click camera icon to change photo</p>
         </div>
 
         <!-- Quick Stats -->
@@ -225,6 +236,27 @@
 
           <!-- Privacy Settings -->
           <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
+            <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Appearance & Theme</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: #f9fafb; border-radius: 4px; margin-bottom: 1.5rem;">
+              <div>
+                <p style="margin: 0; font-weight: 500; color: #333;">🌓 Dark Mode</p>
+                <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 0.9rem;">Use dark theme for comfortable viewing</p>
+              </div>
+              <button id="theme-toggle-btn" class="theme-toggle-btn" style="position: relative; width: 60px; height: 30px; border: none; border-radius: 30px; background-color: #ddd; cursor: pointer; transition: background-color 0.3s; display: flex; align-items: center; justify-content: space-between; padding: 2px; font-size: 14px;">
+                <span style="margin-left: 4px;">☀️</span>
+                <span style="position: absolute; height: 26px; width: 26px; left: 2px; background-color: white; border-radius: 50%; transition: left 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></span>
+                <span style="margin-right: 4px;">🌙</span>
+              </button>
+            </div>
+
+            <div style="padding: 1rem; background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 4px; margin-bottom: 1.5rem;">
+              <p style="color: #0c4a6e; margin: 0; font-size: 0.9rem;"><strong>Theme Preference:</strong> Your choice will be saved and applied across all pages.</p>
+            </div>
+          </div>
+
+          <!-- Privacy Settings -->
+          <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0;">
             <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Privacy & Notifications</h3>
             
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f9fafb; border-radius: 4px;">
@@ -341,6 +373,13 @@
         document.getElementById('profile-email').textContent = userData.email;
         document.getElementById('profile-joined').textContent = `Member Since ${userData.joinedDate}`;
         
+        // Update profile picture if available
+        const profileAvatar = document.getElementById('profile-avatar');
+        if (userData.profilePicture) {
+          profileAvatar.style.background = 'none';
+          profileAvatar.innerHTML = `<img src="${userData.profilePicture}" style="width: 100%; height: 100%; object-fit: cover;">`;
+        }
+        
         // Update personal information section
         document.getElementById('info-fullname').textContent = userData.fullname;
         document.getElementById('info-email').textContent = userData.email;
@@ -361,6 +400,45 @@
 
     // Load user data when page loads
     window.addEventListener('load', loadUserData);
+
+    // Profile Picture Upload Handler
+    const profilePicUpload = document.getElementById('profile-pic-upload');
+    const profileAvatar = document.getElementById('profile-avatar');
+
+    profilePicUpload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      
+      if (file) {
+        // Check file size (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          alert('File size must be less than 5MB');
+          return;
+        }
+
+        // Check file type
+        if (!file.type.startsWith('image/')) {
+          alert('Please select a valid image file');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageData = e.target.result;
+          
+          // Save image to localStorage
+          const userData = JSON.parse(localStorage.getItem('userData')) || {};
+          userData.profilePicture = imageData;
+          localStorage.setItem('userData', JSON.stringify(userData));
+
+          // Update avatar display
+          profileAvatar.style.background = 'none';
+          profileAvatar.innerHTML = `<img src="${imageData}" style="width: 100%; height: 100%; object-fit: cover;">`;
+          
+          alert('Profile picture updated successfully!');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
     function switchTab(event, tabName) {
       event.preventDefault();
@@ -415,6 +493,36 @@
         alert('Settings saved successfully!');
       }
     }
+
+    // Dark Mode Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const htmlElement = document.documentElement;
+    
+    // Check for saved theme preference or default to 'light'
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+      htmlElement.setAttribute('data-theme', 'dark');
+      themeToggleBtn.style.backgroundColor = '#1f2937';
+      themeToggleBtn.querySelector('span:nth-child(2)').style.left = '32px';
+    }
+    
+    // Theme toggle event listener
+    themeToggleBtn.addEventListener('click', () => {
+      const theme = htmlElement.getAttribute('data-theme');
+      const newTheme = theme === 'dark' ? 'light' : 'dark';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Update button appearance
+      if (newTheme === 'dark') {
+        themeToggleBtn.style.backgroundColor = '#1f2937';
+        themeToggleBtn.querySelector('span:nth-child(2)').style.left = '32px';
+      } else {
+        themeToggleBtn.style.backgroundColor = '#ddd';
+        themeToggleBtn.querySelector('span:nth-child(2)').style.left = '2px';
+      }
+    });
 
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
