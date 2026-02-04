@@ -1013,6 +1013,15 @@ html[data-theme="dark"] .hamburger-label {
   color: var(--text-primary);
 }
 
+/* Stronger selectors to override the generic span rule in dark mode */
+html[data-theme="dark"] .header-container .hamburger-label {
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .header-container .hamburger-menu span {
+  background-color: var(--text-primary);
+}
+
 html[data-theme="dark"] .profile-tab {
   color: var(--text-secondary) !important;
 }
