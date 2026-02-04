@@ -64,12 +64,41 @@
       <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0; text-align: center;">
         <p style="color: #666; margin-bottom: 1rem;">Or continue with</p>
         <div style="display: flex; gap: 1rem; justify-content: center;">
-          <button type="button" class="btn" style="background-color: #f0f0f0; color: #333; flex: 1; max-width: 150px;">Google</button>
-          <button type="button" class="btn" style="background-color: #f0f0f0; color: #333; flex: 1; max-width: 150px;">GitHub</button>
+          <button id="btn-google" type="button" class="btn" style="background-color: #fff; color: #333; flex: 1; max-width: 150px;" onclick="signInWithGoogle()">Google</button>
+          <button id="btn-github" type="button" class="btn" style="background-color: #fff; color: #333; flex: 1; max-width: 150px;" onclick="signInWithGitHub()">GitHub</button>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Forgot password modal -->
+  <div id="forgot-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); align-items:center; justify-content:center;">
+    <div style="background:var(--bg-primary); padding:1.5rem; border-radius:8px; width:320px; max-width:90%;">
+      <h3 style="margin-top:0;">Reset password</h3>
+      <p style="color:var(--text-secondary);">Enter your registered email to receive a reset code.</p>
+      <div class="form-group">
+        <label for="reset-email">Email</label>
+        <input id="reset-email" type="email" placeholder="you@example.com" />
+      </div>
+      <div style="display:flex; gap:0.5rem;">
+        <button class="btn btn-primary" onclick="sendResetCode()">Send code</button>
+        <button class="btn" onclick="closeForgot()">Cancel</button>
+      </div>
+      <hr />
+      <h4 style="margin:0.5rem 0 0 0;">Have a code?</h4>
+      <div class="form-group">
+        <label for="reset-code">Code</label>
+        <input id="reset-code" type="text" placeholder="123456" />
+      </div>
+      <div class="form-group">
+        <label for="new-password">New password</label>
+        <input id="new-password" type="password" placeholder="New password" />
+      </div>
+      <div style="display:flex; gap:0.5rem;">
+        <button class="btn btn-primary" onclick="verifyResetCode()">Verify & Update</button>
+      </div>
+    </div>
+  </div>
 
   <footer>
    
@@ -77,6 +106,7 @@
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  <script src="auth.js"></script>
 
   <script>
     function handleLogin(event) {
@@ -126,6 +156,18 @@
         navMenu.classList.remove('active');
       });
     });
+
+    // Forgot password link behavior
+    document.querySelectorAll('a[href="#forgot"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('forgot-modal').style.display = 'flex';
+      });
+    });
+
+    function closeForgot(){
+      document.getElementById('forgot-modal').style.display = 'none';
+    }
   </script>
 </body>
 </html>

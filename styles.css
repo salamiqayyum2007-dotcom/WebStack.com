@@ -89,9 +89,17 @@ nav a.active {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: #333;
+  background-color: var(--text-primary);
   border-radius: 2px;
   transition: all 0.3s ease;
+}
+
+.hamburger-label {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .hamburger-menu.active span:nth-child(1) {
@@ -993,6 +1001,16 @@ html[data-theme="dark"] .auth-btn {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
+}
+
+/* Ensure hamburger keeps transparent background in dark theme and uses theme colors */
+html[data-theme="dark"] .hamburger-menu {
+  background: none;
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .hamburger-label {
+  color: var(--text-primary);
 }
 
 html[data-theme="dark"] .profile-tab {
