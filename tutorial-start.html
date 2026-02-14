@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Tutorials - WebStack</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><a href="index.html">WebStack</a></h1>
+      </div>
+      <button class="hamburger-menu" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+  
+    </div>
+  </header>
+
+  <main class="content">
+    <h1 style="text-align:center; color:#333;">Tutorial Videos</h1>
+    <p style="text-align:center; color:#666; margin-bottom:2rem;">Curated YouTube tutorials covering HTML, CSS, JavaScript, React and more.</p>
+
+    <!-- Beginner Level -->
+    <section class="level-section">
+      <h2 style="color:#2563eb;">Beginner</h2>
+      <p style="color:#666;">Start here if you're new to web development.</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <h3>HTML Crash Course For Absolute Beginners</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" title="HTML Crash Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>CSS Crash Course For Beginners</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/yfoY53QXEnI" title="CSS Crash Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>JavaScript Basics - Beginner Tutorial</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/hdI2bqOjy3c" title="JavaScript Basics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <h3>Responsive Web Design Overview</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/srvUrASNj0s" title="Responsive Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Git & GitHub Crash Course</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/RGOj5yH7evk" title="Git & GitHub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intermediate Level -->
+    <section class="level-section">
+      <h2 style="color:#2563eb;">Intermediate</h2>
+      <p style="color:#666;">For learners who know the basics and want to build projects.</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <h3>JavaScript DOM Crash Course</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/0ik6X4DJKCc" title="DOM Crash Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Modern JavaScript (ES6+) Tutorial</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/NCwa_xi0Uuc" title="ES6 Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>React JS Beginner to Intermediate</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Ke90Tje7VS0" title="React Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <h3>Async JavaScript & Promises</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/PoRJizFvM7s" title="Async JavaScript" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Working with APIs (Fetch)</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Oive66jrwBs" title="Fetch API" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Level -->
+    <section class="level-section">
+      <h2 style="color:#2563eb;">Advanced</h2>
+      <p style="color:#666;">Deep dives, performance, architecture and deployment.</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <h3>React Hooks & Advanced Patterns</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/f687hBjwFcM" title="React Hooks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Web Performance Optimization</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/0mBq6QNH7fE" title="Performance Optimization" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Deployment: Netlify, Vercel & Hosting</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/1wZwK6FJQFU" title="Deployment Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <h3>Next.js Crash Course (SSR & Routing)</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/mTz0GXj8NN0" title="Next.js Crash Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Progressive Web Apps (PWA) Overview</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/dGcsHMXbSOA" title="PWA Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center; margin-top:2rem;"><a class="btn" href="tutorials.html">Back to tutorials</a></div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WebStack. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      if (navMenu) navMenu.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+    // Add fallback "Open on YouTube" links below each embedded iframe
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.video-wrapper iframe').forEach(iframe => {
+        try {
+          const src = iframe.getAttribute('src') || '';
+          const match = src.match(/embed\/([a-zA-Z0-9_-]{11})/);
+          if (match) {
+            const id = match[1];
+            const link = document.createElement('a');
+            link.href = `https://www.youtube.com/watch?v=${id}`;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = 'Open on YouTube';
+            link.style.display = 'inline-block';
+            link.style.marginTop = '0.5rem';
+            link.className = 'video-fallback-link';
+            // append if not already present
+            const parent = iframe.parentElement;
+            if (parent && !parent.querySelector('.video-fallback-link')) parent.appendChild(link);
+          }
+        } catch (e) {
+          // ignore
+        }
+      });
+    });
+  </script>
+</body>
+</html>

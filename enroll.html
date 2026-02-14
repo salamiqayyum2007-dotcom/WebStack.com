@@ -15,7 +15,7 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-        <p>Learn Web Development</p>
+       
       </div>
       <button class="hamburger-menu" id="hamburger">
         <span></span>
@@ -23,12 +23,11 @@
         <span></span>
       </button>
       <nav id="nav-menu">
-        <a href="index.html">Home</a>
+        
         <a href="courses.html">Courses</a>
         <a href="tutorials.html">Tutorials</a>
         <a href="exercises.html">Exercises</a>
-        <a href="login.html" class="auth-btn">Login</a>
-        <a href="register.html" class="auth-btn register-btn">Sign Up</a>
+        <a href="profile.html">👤 My Profile</a>
       </nav>
     </div>
   </header>
@@ -39,18 +38,18 @@
       <p style="opacity: 0.95;">Choose your course and get started today</p>
     </section>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+    <div class="enroll-container">
+      <div class="enroll-grid">
         
         <!-- Course Selection -->
         <div>
           <h2 style="color: #333; margin-bottom: 1.5rem;">Select Your Course</h2>
           
-          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;">
+          <div class="card">
             <form onsubmit="handleEnrollment(event)">
               <div class="form-group" style="margin: 0;">
                 <label for="course-select" style="padding: 1.5rem 1.5rem 0.5rem 1.5rem; display: block;">Course</label>
-                <select id="course-select" name="course" required onchange="updateCourseDetails()" style="margin: 0 1.5rem 1.5rem 1.5rem; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; width: calc(100% - 3rem);">
+                <select id="course-select" name="course" required onchange="updateCourseDetails()" class="form-control">
                   <option value="">-- Select a Course --</option>
                   <option value="html">HTML Fundamentals - $29</option>
                   <option value="css">CSS Styling & Layout - $49</option>
@@ -68,12 +67,12 @@
 
               <hr style="margin: 0; border: none; border-top: 1px solid #e0e0e0;">
 
-              <div style="padding: 1.5rem;">
+              <div class="card-body">
                 <label for="user-email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Email Address</label>
-                <input type="email" id="user-email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1.5rem;">
+                <input type="email" id="user-email" name="email" required placeholder="your@email.com" class="form-control">
 
                 <label for="payment-method" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Payment Method</label>
-                <select id="payment-method" name="payment" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1.5rem;">
+                <select id="payment-method" name="payment" required class="form-control">
                   <option value="">-- Select Payment Method --</option>
                   <option value="credit">Credit Card</option>
                   <option value="debit">Debit Card</option>
