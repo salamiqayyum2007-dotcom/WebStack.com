@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 // Simple in-memory store for codes. For production use a persistent store (Redis, DB).
 const codes = new Map();
+const userProgress = new Map();
+const leaderboard = new Map();
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -21,6 +23,74 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
   }
+});
+
+// Exercise endpoints
+app.post('/api/exercises/save-progress', (req, res) => {
+  const { userId, exerciseId, code, status, points } = req.body;
+  
+  if (!userId || !exerciseId) {
+    return res.status(400).json({ error: 'userId and exerciseId required' });
+  }
+  
+  if (!userProgress.has(userId)) {
+    userProgress.set(userId, {});
+  }
+  
+  const userExercises = userProgress.get(userId);
+  userExercises[exerciseId] = {
+    code,
+    status,
+    points,
+    savedAt: new Date()
+  };
+  
+  // Update leaderboard
+  const totalPoints = Object.values(userExercises).reduce((sum, ex) => sum + (ex.points || 0), 0);
+  leaderboard.set(userId, {
+    userId,
+    points: totalPoints,
+    completedExercises: Object.keys(userExercises).filter(id => userExercises[id].status === 'completed').length,
+    lastUpdated: new Date()
+  });
+  
+  res.json({ 
+    success: true, 
+    totalPoints,
+    message: 'Progress saved successfully'
+  });
+});
+
+app.get('/api/exercises/progress/:userId', (req, res) => {
+  const { userId } = req.params;
+  const progress = userProgress.get(userId) || {};
+  res.json(progress);
+});
+
+app.get('/api/leaderboard', (req, res) => {
+  const sorted = Array.from(leaderboard.values())
+    .sort((a, b) => b.points - a.points)
+    .slice(0, 20);
+  res.json(sorted);
+});
+
+app.get('/api/leaderboard/rank/:userId', (req, res) => {
+  const { userId } = req.params;
+  const userStats = leaderboard.get(userId);
+  
+  if (!userStats) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  
+  const sorted = Array.from(leaderboard.values())
+    .sort((a, b) => b.points - a.points);
+  
+  const rank = sorted.findIndex(u => u.userId === userId) + 1;
+  res.json({ 
+    ...userStats,
+    rank,
+    totalUsers: sorted.length
+  });
 });
 
 app.post('/send-reset-code', async (req, res) => {
