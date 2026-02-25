@@ -27,6 +27,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative; /* for absolute-positioned toggle button */
 }
 
 .logo {
@@ -151,6 +152,31 @@ nav.mobile-menu.active {
 
 .register-btn:hover {
   background-color: #1d4ed8;
+}
+
+/* Theme toggle button (added dynamically) */
+#theme-toggle-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 24px;
+  background: #ddd;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+#theme-toggle-btn span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  left: 2px;
+  top: 2px;
+  transition: left 0.3s;
 }
 
 /* Main Content */

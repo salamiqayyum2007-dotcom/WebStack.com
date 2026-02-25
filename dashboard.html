@@ -33,6 +33,42 @@
       </nav>
     </div>
   </header>
+  <script src="site.js"></script>
+  <script>
+    // fill welcome and stats
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = getCurrentUser();
+      if (user) {
+        document.getElementById('welcome-message').textContent = `Welcome back, ${user.fullname}! 👋`;
+        const coursesCount = user.enrolled ? user.enrolled.length : 0;
+        document.querySelector('.stats .stat-card h3').textContent = coursesCount;
+        
+        // fetch user rank/points
+        try {
+          const res = await apiRequest(`/api/leaderboard/rank/${user.id}`);
+          if (res.ok) {
+            const stats = await res.json();
+            // second stat card -> points
+            const cards = document.querySelectorAll('.stats .stat-card');
+            if (cards[1]) {
+              cards[1].querySelector('h3').textContent = stats.points;
+              cards[1].querySelector('p').textContent = 'Points Earned';
+            }
+            // fourth card -> rank, maybe show rank
+            if (cards[3]) {
+              cards[3].querySelector('h3').textContent = `#${stats.rank}`;
+              cards[3].querySelector('p').textContent = 'Leaderboard Rank';
+            }
+          }
+        } catch (e) {
+          console.warn('Could not fetch leaderboard rank', e);
+        }
+      } else {
+        // redirect if not logged in
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
 
   <main class="content">
     <h1 id="welcome-message" style="color: #333; margin-bottom: 2rem;">Welcome Back, Student! 👋</h1>
@@ -228,20 +264,6 @@
 
     window.addEventListener('load', loadDashboardData);
 
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
   </script>
 </body>
 </html>

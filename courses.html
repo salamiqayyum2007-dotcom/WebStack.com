@@ -33,7 +33,10 @@
   </header>
 
   <main class="content">
-    <h1 style="text-align: center; margin-bottom: 2rem; color: #333;">All Courses</h1>
+    <h1 style="text-align: center; margin-bottom: 1rem; color: #333;">All Courses</h1>
+    <div style="text-align:center; margin-bottom: 2rem;">
+      <input type="text" id="course-search" placeholder="Search courses..." style="padding:0.5rem 1rem; width:300px; max-width:90%; border:1px solid #ccc; border-radius:4px;" />
+    </div>
     
     <section class="course" id="html">
       <h2>🌐 HTML - Fundamentals</h2>
@@ -102,20 +105,57 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+    // enrollment logic & search
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = getCurrentUser();
+      document.querySelectorAll('.course').forEach(sec => {
+        const courseId = sec.id;
+        const btn = sec.querySelector('a.btn-primary');
+        if (!btn) return;
+        if (user && user.enrolled && user.enrolled.includes(courseId)) {
+          btn.textContent = 'Enrolled';
+          btn.href = '#';
+          btn.style.pointerEvents = 'none';
+          btn.style.opacity = '0.6';
+        } else {
+          btn.addEventListener('click', async e => {
+            if (!user) {
+              e.preventDefault();
+              window.location.href = 'login.html';
+              return;
+            }
+            e.preventDefault();
+            const res = await apiRequest('/api/enroll', {
+              method: 'POST',
+              body: { userId: user.id, courseId }
+            });
+            const data = await res.json();
+            if (data.success) {
+              btn.textContent = 'Enrolled';
+              btn.style.pointerEvents = 'none';
+              btn.style.opacity = '0.6';
+              // update local copy
+              user.enrolled = data.enrolled;
+              saveCurrentUser(user);
+            } else {
+              alert(data.error || 'Failed to enroll');
+            }
+          });
+        }
       });
+
+      const searchInput = document.getElementById('course-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const term = searchInput.value.toLowerCase();
+          document.querySelectorAll('.course').forEach(sec => {
+            const text = sec.textContent.toLowerCase();
+            sec.style.display = text.includes(term) ? '' : 'none';
+          });
+        });
+      }
     });
   </script>
 </body>

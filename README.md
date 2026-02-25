@@ -35,8 +35,26 @@ Security notes
 Files added
 
 - `auth.js` — client-side helpers for OAuth and reset flows
-- `server/index.js` — simple Express server that sends codes via Nodemailer
+- `site.js` — shared frontend utilities (nav, auth helpers, API wrapper, theme toggle)
+- `server/index.js` — Express API handling users, courses, enrollments, exercise progress, leaderboard, and reset codes
 - `server/package.json`, `.env.example` — server setup
+
+New API endpoints (see `server/index.js`):
+
+```
+POST /api/register            { email, password, fullname }           → create user
+POST /api/login               { email, password }                     → authenticate
+GET  /api/users/:userId       → fetch user profile
+POST /api/users/:userId       { fullname, location, bio, website }   → update profile
+GET  /api/courses             → list available courses
+POST /api/enroll              { userId, courseId }                   → enroll user in course
+POST /api/exercises/save-progress { userId, exerciseId, code, status, points }
+GET  /api/leaderboard         → top users (points desc)
+GET  /api/leaderboard/rank/:userId → user rank + stats
+(send/verify reset code endpoints live under root /send-reset-code, /verify-reset-code)
+```
+
+These support the new features on the front end, such as dynamic course listings, enrollment buttons, profile syncing, and leaderboard.
 
 If you want, I can:
 

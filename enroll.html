@@ -51,12 +51,6 @@
                 <label for="course-select" style="padding: 1.5rem 1.5rem 0.5rem 1.5rem; display: block;">Course</label>
                 <select id="course-select" name="course" required onchange="updateCourseDetails()" class="form-control">
                   <option value="">-- Select a Course --</option>
-                  <option value="html">HTML Fundamentals - $29</option>
-                  <option value="css">CSS Styling & Layout - $49</option>
-                  <option value="javascript">JavaScript - Interactive Web - $59</option>
-                  <option value="react">React - Modern Framework - $79</option>
-                  <option value="python">Python - Backend Development - $69</option>
-                  <option value="tools">Web Development Tools - $39</option>
                 </select>
               </div>
 
@@ -190,14 +184,10 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
   <script>
-    const courseDetails = {
-      html: { name: 'HTML Fundamentals', duration: '4 weeks • 20 lessons', price: 29 },
-      css: { name: 'CSS Styling & Layout', duration: '6 weeks • 30 lessons', price: 49 },
-      javascript: { name: 'JavaScript - Interactive Web', duration: '8 weeks • 40 lessons', price: 59 },
-      react: { name: 'React - Modern Framework', duration: '8 weeks • 35 lessons', price: 79 },
-      python: { name: 'Python - Backend Development', duration: '10 weeks • 50 lessons', price: 69 },
-      tools: { name: 'Web Development Tools', duration: '4 weeks • 18 lessons', price: 39 }
+    let courseDetails = {}; // will be populated from server
+
     };
 
     function updateCourseDetails() {
@@ -214,35 +204,63 @@
       }
     }
 
-    function handleEnrollment(event) {
+    async function handleEnrollment(event) {
       event.preventDefault();
       const course = document.getElementById('course-select').value;
-      const email = document.getElementById('user-email').value;
-      
-      if (course && email) {
-        const courseName = courseDetails[course].name;
-        alert(`🎉 Enrollment Successful!\n\nCourse: ${courseName}\nEmail: ${email}\n\nA confirmation email has been sent to you. You can now start learning!`);
-        
-        // In a real app, send this to backend
-        setTimeout(() => {
-          window.location.href = 'courses.html';
-        }, 1000);
+      const emailField = document.getElementById('user-email');
+      const email = emailField.value;
+      const user = getCurrentUser();
+      if (!user) {
+        alert('Please log in before enrolling');
+        window.location.href = 'login.html';
+        return;
+      }
+      if (course) {
+        try {
+          const res = await apiRequest('/api/enroll', {
+            method: 'POST',
+            body: { userId: user.id, courseId: course }
+          });
+          const data = await res.json();
+          if (data.success) {
+            user.enrolled = data.enrolled;
+            saveCurrentUser(user);
+            const courseName = courseDetails[course].name;
+            alert(`🎉 Enrollment Successful!\n\nCourse: ${courseName}\nEmail: ${user.email}`);
+            window.location.href = 'courses.html';
+          } else {
+            alert(data.error || 'Enrollment failed');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Network error during enrollment');
+        }
       }
     }
 
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
+    document.addEventListener('DOMContentLoaded', async () => {
+      // prefill email if logged in
+      const user = getCurrentUser();
+      if (user) {
+        document.getElementById('user-email').value = user.email;
+      }
+      // load courses from API
+      try {
+        const res = await apiRequest('/api/courses');
+        if (res.ok) {
+          const courses = await res.json();
+          const select = document.getElementById('course-select');
+          courses.forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c.id;
+            opt.textContent = `${c.title} - $${c.price || 0}`;
+            select.appendChild(opt);
+            courseDetails[c.id] = { name: c.title, duration: c.duration || '', price: c.price || 0 };
+          });
+        }
+      } catch (e) {
+        console.warn('failed to load courses', e);
+      }
     });
   </script>
 </body>
