@@ -1,0 +1,8 @@
+# Node modules
+node_modules/
+
+# SQLite database file
+server/db.sqlite
+
+# Environment
+server/.env

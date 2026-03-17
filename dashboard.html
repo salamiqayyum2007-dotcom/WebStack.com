@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - WebStack</title>
+  <title>Dashboard — WebStack</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,231 +15,67 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-      
+        <p>Your learning hub</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
+      <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav id="nav-menu">
-       
-        <a href="courses.html">Courses</a>
-        <a href="tutorials.html">Tutorials</a>
-       
-        <span style="color: #666;"> | </span>
-        <a href="profile.html">👤 My Profile</a>
-        <a href="index.html" class="auth-btn">Logout</a>
-      </nav>
+      <nav id="nav-menu"></nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
     </div>
   </header>
-  <script src="site.js"></script>
-  <script>
-    // fill welcome and stats
-    document.addEventListener('DOMContentLoaded', async () => {
-      const user = getCurrentUser();
-      if (user) {
-        document.getElementById('welcome-message').textContent = `Welcome back, ${user.fullname}! 👋`;
-        const coursesCount = user.enrolled ? user.enrolled.length : 0;
-        document.querySelector('.stats .stat-card h3').textContent = coursesCount;
-        
-        // fetch user rank/points
-        try {
-          const res = await apiRequest(`/api/leaderboard/rank/${user.id}`);
-          if (res.ok) {
-            const stats = await res.json();
-            // second stat card -> points
-            const cards = document.querySelectorAll('.stats .stat-card');
-            if (cards[1]) {
-              cards[1].querySelector('h3').textContent = stats.points;
-              cards[1].querySelector('p').textContent = 'Points Earned';
-            }
-            // fourth card -> rank, maybe show rank
-            if (cards[3]) {
-              cards[3].querySelector('h3').textContent = `#${stats.rank}`;
-              cards[3].querySelector('p').textContent = 'Leaderboard Rank';
-            }
-          }
-        } catch (e) {
-          console.warn('Could not fetch leaderboard rank', e);
-        }
-      } else {
-        // redirect if not logged in
-        window.location.href = 'login.html';
-      }
-    });
-  </script>
 
-  <main class="content">
-    <h1 id="welcome-message" style="color: #333; margin-bottom: 2rem;">Welcome Back, Student! 👋</h1>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome learner</h2>
+        <p>Your progress, courses, and achievements are all here.</p>
+      </div>
+    </section>
 
-    <!-- Stats Overview -->
-    <div class="stats" style="margin-bottom: 3rem;">
-      <div class="stat-card">
-        <h3>12</h3>
-        <p>Courses Enrolled</p>
-      </div>
-      <div class="stat-card">
-        <h3>650</h3>
-        <p>Points Earned</p>
-      </div>
-      <div class="stat-card">
-        <h3>8</h3>
-        <p>Certificates</p>
-      </div>
-      <div class="stat-card">
-        <h3>42%</h3>
-        <p>Progress</p>
-      </div>
-    </div>
-
-    <!-- Learning Progress -->
-    <div style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <h2 style="color: #333; margin-bottom: 1.5rem;">📚 My Learning Progress</h2>
-      
-      <div style="margin-bottom: 2rem;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-          <span>HTML Fundamentals</span>
-          <span style="color: #2563eb; font-weight: bold;">75%</span>
+    <section class="dashboard">
+      <div class="dashboard-grid">
+       
+        <div class="dashboard-card">
+          <h3>Recommended Courses</h3>
+          <p>Based on your interests, we suggest these learning paths.</p>
+          <a class="btn btn-small" href="courses.html#web3">Explore</a>
         </div>
-        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
-          <div style="background: #2563eb; height: 100%; width: 75%; border-radius: 4px;"></div>
+        <div class="dashboard-card">
+          <h3>Community</h3>
+          <p>Join discussions, share projects, and collaborate.</p>
+          <a class="btn btn-small" href="team.html">View Community</a>
         </div>
       </div>
-
-      <div style="margin-bottom: 2rem;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-          <span>CSS Styling & Layout</span>
-          <span style="color: #2563eb; font-weight: bold;">60%</span>
-        </div>
-        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
-          <div style="background: #2563eb; height: 100%; width: 60%; border-radius: 4px;"></div>
-        </div>
-      </div>
-
-      <div style="margin-bottom: 2rem;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-          <span>JavaScript Basics</span>
-          <span style="color: #2563eb; font-weight: bold;">40%</span>
-        </div>
-        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
-          <div style="background: #2563eb; height: 100%; width: 40%; border-radius: 4px;"></div>
-        </div>
-      </div>
-
-      <div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-          <span>React Fundamentals</span>
-          <span style="color: #2563eb; font-weight: bold;">25%</span>
-        </div>
-        <div style="background: #e0e0e0; border-radius: 4px; height: 10px; overflow: hidden;">
-          <div style="background: #2563eb; height: 100%; width: 25%; border-radius: 4px;"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recommended Next Steps -->
-    <div style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <h2 style="color: #333; margin-bottom: 1.5rem;">🎯 Recommended Next Steps</h2>
-      
-      <div class="course-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
-          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Complete JavaScript Basics</h3>
-          <p style="color: #666; margin-bottom: 1rem;">You're 40% through. Just 4 lessons remaining!</p>
-          <a class="btn btn-small" href="#" style="margin-top: 0;">Continue</a>
-        </div>
-
-        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
-          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Start React Course</h3>
-          <p style="color: #666; margin-bottom: 1rem;">You're ready! Build modern UIs with React.</p>
-          <a class="btn btn-small" href="#" style="margin-top: 0;">Enroll</a>
-        </div>
-
-        <div style="padding: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px;">
-          <h3 style="color: #2563eb; margin-bottom: 0.5rem;">Try New Exercises</h3>
-          <p style="color: #666; margin-bottom: 1rem;">Practice your JavaScript skills with 5 new challenges.</p>
-          <a class="btn btn-small" href="#" style="margin-top: 0;">Practice</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recent Activity -->
-    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <h2 style="color: #333; margin-bottom: 1.5rem;">📊 Recent Activity</h2>
-      
-      <ul style="list-style: none; padding: 0;">
-        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 1.5rem;">✅</span>
-          <div>
-            <strong>Completed Exercise</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Successfully completed "JavaScript - Number Guessing Game" - +50 points</p>
-          </div>
-          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">Today</span>
-        </li>
-
-        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 1.5rem;">📖</span>
-          <div>
-            <strong>Completed Lesson</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Completed lesson 8 of "CSS Styling & Layout" course</p>
-          </div>
-          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">Yesterday</span>
-        </li>
-
-        <li style="padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 1.5rem;">🏆</span>
-          <div>
-            <strong>Earned Certificate</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Completed and earned certificate in "HTML Fundamentals"</p>
-          </div>
-          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">3 days ago</span>
-        </li>
-
-        <li style="padding: 1rem; display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 1.5rem;">🎯</span>
-          <div>
-            <strong>Enrolled in Course</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Enrolled in "CSS Styling & Layout" course</p>
-          </div>
-          <span style="color: #999; font-size: 0.85rem; margin-left: auto;">5 days ago</span>
-        </li>
-      </ul>
-    </div>
-
+    </section>
   </main>
 
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h4>About</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="team.html">Our Team</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Resources</h4>
+        <h4>Explore</h4>
         <ul>
           <li><a href="courses.html">Courses</a></li>
           <li><a href="tutorials.html">Tutorials</a></li>
-          <li><a href="exercises.html">Exercises</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>Legal</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+        
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>Follow Us</h4>
+        <h4>Support</h4>
         <ul>
-          <li><a href="#twitter">Twitter</a></li>
-          <li><a href="#facebook">Facebook</a></li>
-          <li><a href="#github">GitHub</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
         </ul>
       </div>
     </div>
@@ -248,22 +84,6 @@
     </div>
   </footer>
 
-  <script>
-    // Load user data on dashboard
-    function loadDashboardData() {
-      const storedData = localStorage.getItem('userData');
-      
-      if (storedData) {
-        const userData = JSON.parse(storedData);
-        document.getElementById('welcome-message').textContent = `Welcome Back, ${userData.fullname}! 👋`;
-      } else {
-        alert('Please log in or register first!');
-        window.location.href = 'register.html';
-      }
-    }
-
-    window.addEventListener('load', loadDashboardData);
-
-  </script>
+  <script src="site.js"></script>
 </body>
 </html>

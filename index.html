@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebStack - Learn Web Development</title>
+  <title>WebStack — Learn Web3 & Web Development</title>
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Load theme on page load
     const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   </script>
@@ -16,151 +15,100 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-       
+        <p>Learn Web3, blockchain & modern web development</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
+      <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
-     
-      <nav id="nav-menu">
-        <!-- populated by site.js -->
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
+      <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
       <div class="hero-content">
-        <h2>Build Skills for the Modern Web</h2>
-        <p>Learn HTML, CSS, JavaScript, React, and more with clear explanations and interactive examples.</p>
-       
+        <h2>Build Web3 apps, smart contracts, and modern web UI</h2>
+        <p>Learn with hands-on courses, real projects, and a community of builders.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary btn-large" href="courses.html">Explore Courses</a>
+          <a class="btn btn-secondary btn-large" href="tutorials.html">Start Tutorials</a>
+        </div>
       </div>
     </section>
 
-    <!-- Quick Stats -->
+    <!-- Features -->
     <section class="stats">
+      <h2>What you’ll build</h2>
       <div class="stat-card">
-        <h3>50+</h3>
-        <p>Courses</p>
+        <h3>🧠 Learn Fundamentals</h3>
+        <p>Master HTML, CSS, JavaScript, and modern frontend frameworks.</p>
       </div>
       <div class="stat-card">
-        <h3>1000+</h3>
-        <p>Lessons</p>
+        <h3>🔗 Web3 & Smart Contracts</h3>
+        <p>Build blockchain apps with Solidity, Web3.js, and EVM-compatible chains.</p>
       </div>
       <div class="stat-card">
-        <h3>500K+</h3>
-        <p>Students</p>
+        <h3>🚀 Hands-on Projects</h3>
+        <p>Ship real apps with step-by-step tutorials and deploy to production.</p>
       </div>
       <div class="stat-card">
-        <h3>24/7</h3>
-        <p>Support</p>
+        <h3>🏆 Track Your Progress</h3>
+        <p>Earn badges, follow projects, and see your learning roadmap.</p>
       </div>
     </section>
 
-    <!-- Featured Courses -->
+    <!-- Courses preview -->
     <section class="featured-courses">
-      <h2>Popular Courses</h2>
+      <div class="section-header">
+        <h2>Featured Courses</h2>
+        <a class="btn btn-outline" href="courses.html">View all courses</a>
+      </div>
       <div class="course-grid">
         <div class="course-card">
           <div class="course-icon">🌐</div>
-          <h3>HTML Basics</h3>
-          <p>Learn the foundation of web development with HTML. Create semantic and accessible web pages.</p>
-          <a href="courses.html#html" class="btn-small">Start Course</a>
-        </div>
-        <div class="course-card">
-          <div class="course-icon">🎨</div>
-          <h3>CSS Styling</h3>
-          <p>Master layouts, flexbox, grid, and responsive design. Create beautiful websites.</p>
-          <a href="courses.html#css" class="btn-small">Start Course</a>
-        </div>
-        <div class="course-card">
-          <div class="course-icon">⚡</div>
-          <h3>JavaScript</h3>
-          <p>Make websites interactive with JavaScript. Learn DOM manipulation and ES6+.</p>
-          <a href="courses.html#javascript" class="btn-small">Start Course</a>
+          <h3>Web Fundamentals</h3>
+          <p>HTML, CSS, responsive design, and modern layout techniques.</p>
+          <a class="btn btn-small" href="courses.html#html">Start learning</a>
         </div>
         <div class="course-card">
           <div class="course-icon">⚛️</div>
-          <h3>React JS</h3>
-          <p>Build modern web applications with React. Learn components, hooks, and state management.</p>
-          <a href="courses.html#react" class="btn-small">Start Course</a>
+          <h3>React & UI</h3>
+          <p>Build interactive apps with React, hooks, state management, and routing.</p>
+          <a class="btn btn-small" href="courses.html#react">Start learning</a>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">🔐</div>
+          <h3>Web3 & Solidity</h3>
+          <p>Create smart contracts, deploy to testnets, and build DApps.</p>
+          <a class="btn btn-small" href="courses.html#web3">Start learning</a>
         </div>
       </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
-      <h2>Why Choose WebStack?</h2>
-      <div class="benefits-grid">
-        <div class="benefit-item">
-          <div class="benefit-icon">📚</div>
-          <h3>Comprehensive Content</h3>
-          <p>From beginner to advanced levels, we cover all aspects of web development.</p>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-icon">💻</div>
-          <h3>Live Code Editor</h3>
-          <p>Practice coding directly in your browser with our interactive code editor.</p>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-icon">✅</div>
-          <h3>Practice Exercises</h3>
-          <p>Reinforce your learning with hands-on exercises and real-world projects.</p>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-icon">🎓</div>
-          <h3>Certificates</h3>
-          <p>Earn certificates upon course completion to showcase your skills.</p>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-icon">👥</div>
-          <h3>Community Support</h3>
-          <p>Join a vibrant community of learners and get help from experienced developers.</p>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-icon">📱</div>
-          <h3>Mobile Friendly</h3>
-          <p>Learn on the go with our responsive design that works on all devices.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <h2>Ready to Start Learning?</h2>
-      <p>Join thousands of students learning web development today</p>
-      <a class="btn btn-primary btn-large" href="register.html">Get Started Free</a>
-    </section>
   </main>
 
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h4>About</h4>
+        <h4>Explore</h4>
         <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="team.html">Our Team</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-   
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>Follow Us</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="#twitter">Twitter</a></li>
-          <li><a href="#facebook">Facebook</a></li>
-          <li><a href="#github">GitHub</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
         </ul>
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Team - WebStack</title>
+  <title>Our Team</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,157 +15,84 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-       
+        <p>Your learning hub</p>
       </div>
-      <nav>
-     
-      </nav>
+      
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
+  
     </div>
   </header>
 
   <main>
-    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 4rem 2rem; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Meet Our Team</h1>
-      <p style="font-size: 1.1rem; opacity: 0.95;">Passionate educators and developers building the future of web education</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Meet the Team</h2>
+        <p>The builders, educators, and creators behind WebStack.</p>
+      </div>
     </section>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-      <!-- Leadership Team -->
-      <section style="margin-bottom: 4rem;">
-        <h2 style="color: #333; margin-bottom: 2rem; text-align: center; font-size: 2rem;">👥 Leadership Team</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-          <!-- Team Member 1 -->
-          <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div style="background: linear-gradient(135deg, #030303 0%, #030303 100%); height: 200px; display: flex; align-items: center; justify-content: center;"><img src="1000885989-removebg-preview.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Salami AbdulQayyum Aderinola"></div>
-            <div style="padding: 2rem;">
-              <h3 style="color: #333; margin: 0 0 0.5rem 0;">Salami AbdulQayyum Aderinola</h3>
-              <p style="color: #2563eb; margin: 0 0 1rem 0; font-weight: 500;">CEO & Co-Founder</p>
-              <p style="color: #666; margin: 0; font-size: 0.9rem;">2+ years in web development and online education. Former engineering lead at a Fortune 500 tech company.</p>
-              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">Twitter</a>
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">👨‍💻</div>
-            <div style="padding: 2rem;">
-              <h3 style="color: #333; margin: 0 0 0.5rem 0;">Sarah Rose</h3>
-              <p style="color: #2563eb; margin: 0 0 1rem 0; font-weight: 500;">Staff</p>
-              <p style="color: #666; margin: 0; font-size: 0.9rem;">Full-stack developer with expertise in React, Node.js, and cloud technologies. Passionate about teaching.</p>
-              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">Twitter</a>
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 3 -->
-          <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">👩‍🏫</div>
-            <div style="padding: 2rem;">
-              <h3 style="color: #333; margin: 0 0 0.5rem 0;">Emily Rodriguez</h3>
-              <p style="color: #2563eb; margin: 0 0 1rem 0; font-weight: 500;">Head of Curriculum</p>
-              <p style="color: #666; margin: 0; font-size: 0.9rem;">Educational specialist with 10+ years of experience in curriculum design and online learning.</p>
-              <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">Twitter</a>
-                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
-              </div>
-            </div>
-          </div>
+    <section class="featured-courses">
+      <h2>Core Contributors</h2>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-icon">🧠</div>
+          <h3>Alex</h3>
+          <p>Product lead & curriculum designer. Loves clean code and great UX.</p>
         </div>
-      </section>
-
-      <!-- Instructors -->
-      <section style="margin-bottom: 4rem;">
-        <h2 style="color: #333; margin-bottom: 2rem; text-align: center; font-size: 2rem;">🎓 Featured Instructors</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-          <!-- Instructor 1 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍💻</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">David Lee</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">JavaScript & React Expert</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Instructor for JavaScript and React courses. 8+ years experience at tech startups.</p>
-          </div>
-
-          <!-- Instructor 2 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👩‍🎨</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">Jessica Wong</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">CSS & Design Specialist</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Teaches CSS, UI/UX design, and responsive web design. Former design lead at Adobe.</p>
-          </div>
-
-          <!-- Instructor 3 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍🔬</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">Alex Kumar</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">Backend & DevOps Expert</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Teaches Node.js, Python, and cloud technologies. Former DevOps engineer at Google.</p>
-          </div>
-
-          <!-- Instructor 4 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👩‍💼</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">Lisa Anderson</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">Web Performance Expert</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Specializes in web performance optimization and modern development tools.</p>
-          </div>
-
-          <!-- Instructor 5 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍🎯</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">Marcus Brown</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">Project Lead</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Leads hands-on projects and real-world application development. 15+ years industry experience.</p>
-          </div>
-
-          <!-- Instructor 6 -->
-          <div style="background: white; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">👩‍💻</div>
-            <h3 style="color: #333; margin: 0 0 0.5rem 0;">Priya Patel</h3>
-            <p style="color: #2563eb; margin: 0 0 0.75rem 0; font-size: 0.9rem;">Community Manager</p>
-            <p style="color: #666; margin: 0; font-size: 0.85rem;">Manages community forums and student support. Former TA at top bootcamp.</p>
-          </div>
+        <div class="course-card">
+          <div class="course-icon">⚙️</div>
+          <h3>Taylor</h3>
+          <p>Backend architect and API engineer, keeping everything running smoothly.</p>
         </div>
-      </section>
-
-      <!-- Join Us CTA -->
-      <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 3rem 2rem; border-radius: 8px; text-align: center;">
-        <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Want to Join Our Team?</h2>
-        <p style="margin-bottom: 2rem; opacity: 0.95;">We're always looking for passionate educators and developers to join our mission.</p>
-        <a href="contact.html" class="btn btn-primary" style="background-color: white; color: #2563eb;">View Career Opportunities</a>
-      </section>
-    </div>
+        <div class="course-card">
+          <div class="course-icon">🎨</div>
+          <h3>Jordan</h3>
+          <p>Design lead and community builder, makes learning look great.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
   
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  
 
   <script src="site.js"></script>
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>

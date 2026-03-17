@@ -1,6 +1,10 @@
 // Shared helper functions for WebStack frontend
 
-const API_BASE = window.API_BASE || 'http://localhost:3000'; // change if needed
+// clear any stored API base override (was used for debug features)
+localStorage.removeItem('API_BASE');
+// If the page is opened via file://, use localhost:3000 to reach the dev server.
+// Otherwise, use a relative path so it works when hosted on the same origin.
+const API_BASE = window.API_BASE || (location.protocol === 'file:' ? 'http://localhost:3000' : '');
 
 // -- authentication helpers --
 function saveCurrentUser(user) {
@@ -17,20 +21,36 @@ function logout() {
 
 // generic fetch helper
 async function apiRequest(path, opts = {}) {
-  const url = API_BASE + path;
   const defaultHeaders = { 'Content-Type': 'application/json' };
   if (opts.body && typeof opts.body !== 'string') {
     opts.body = JSON.stringify(opts.body);
   }
   opts.headers = Object.assign(defaultHeaders, opts.headers || {});
-  const res = await fetch(url, opts);
-  return res;
+
+  const baseUrls = [API_BASE];
+  // If running from file://, try both localhost and 127.0.0.1 in case one is blocked.
+  if (location.protocol === 'file:' && API_BASE.startsWith('http://localhost')) {
+    baseUrls.push(API_BASE.replace('localhost', '127.0.0.1'));
+  }
+
+  let lastError;
+  for (const base of baseUrls) {
+    const url = base + path;
+    try {
+      return await fetch(url, opts);
+    } catch (err) {
+      lastError = err;
+      console.warn('apiRequest failed:', url, err);
+    }
+  }
+
+  throw lastError || new Error('Unknown network error');
 }
 
 // page utilities
 function requireLogin() {
   if (!getCurrentUser()) {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   }
 }
 
@@ -43,16 +63,14 @@ function rebuildNav() {
   const links = [
     { href: 'index.html', text: 'Home' },
     { href: 'courses.html', text: 'Courses' },
-    { href: 'tutorials.html', text: 'Tutorials' }
+    { href: 'tutorials.html', text: 'Tutorials' },
+    { href: 'about.html', text: 'About' },
+    { href: 'contact.html', text: 'Contact' },
   ];
   const user = getCurrentUser();
   if (user) {
-    links.push({ href: 'leaderboard.html', text: '🏆 Leaderboard' });
-    links.push({ href: 'profile.html', text: '👤 My Profile' });
+    links.push({ href: 'dashboard.html', text: 'Dashboard' });
     links.push({ href: '#', text: 'Logout', onClick: logout });
-  } else {
-    links.push({ href: 'login.html', text: 'Login' });
-    links.push({ href: 'register.html', text: 'Sign Up' });
   }
 
   links.forEach(l => {
@@ -93,33 +111,90 @@ function toggleTheme() {
   const next = current === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-}
-function initThemeToggle() {
-  const header = document.querySelector('.header-container');
-  if (!header) return;
-  let btn = document.getElementById('theme-toggle-btn');
-  if (btn) return;
-  btn = document.createElement('button');
-  btn.id = 'theme-toggle-btn';
-  btn.title = 'Toggle theme';
-  btn.style.cssText = 'position:absolute;top:1rem;right:1rem;width:40px;height:24px;background:#ddd;border-radius:12px;border:none;cursor:pointer;padding:0;';
-  btn.innerHTML = '<span style="display:block;width:18px;height:18px;border-radius:50%;background:#fff;position:relative;left:2px;top:2px;transition:left 0.3s"></span>';
-  btn.addEventListener('click', () => {
-    toggleTheme();
-    const span = btn.querySelector('span');
-    const theme = document.documentElement.getAttribute('data-theme');
-    span.style.left = theme === 'dark' ? '20px' : '2px';
-  });
-  header.appendChild(btn);
-  // set initial position
-  const theme = document.documentElement.getAttribute('data-theme');
-  btn.querySelector('span').style.left = theme === 'dark' ? '20px' : '2px';
+  updateThemeToggle();
 }
 
-// when DOM ready run nav and other helpers
+function updateThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const theme = document.documentElement.getAttribute('data-theme') || 'light';
+  btn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', toggleTheme);
+  updateThemeToggle();
+}
+
+// Simple scroll reveal for elements with the .animate class
+function initScrollReveal() {
+  const elements = Array.from(document.querySelectorAll('.animate'));
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+// Header animation (logo & nav fade-in)
+function initHeaderAnimation() {
+  const header = document.querySelector('header');
+  if (!header) return;
+  requestAnimationFrame(() => {
+    header.classList.add('header-animated');
+  });
+}
+
+// Simple carousel slider for video walkthroughs
+function initVideoCarousel() {
+  const carousel = document.querySelector('.video-carousel');
+  if (!carousel) return;
+  const track = carousel.querySelector('.carousel-track');
+  const prevBtn = carousel.querySelector('.carousel-btn.prev');
+  const nextBtn = carousel.querySelector('.carousel-btn.next');
+  const slides = Array.from(track.children);
+  let index = 0;
+
+  const updateButtons = () => {
+    prevBtn.disabled = index <= 0;
+    nextBtn.disabled = index >= slides.length - 1;
+  };
+
+  const updateSlide = () => {
+    const slideWidth = slides[index].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${slideWidth * index}px)`;
+    updateButtons();
+  };
+
+  prevBtn.addEventListener('click', () => {
+    index = Math.max(0, index - 1);
+    updateSlide();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = Math.min(slides.length - 1, index + 1);
+    updateSlide();
+  });
+
+  window.addEventListener('resize', updateSlide);
+  updateSlide();
+}
+
+// when DOM ready run nav, theme toggle, and animations
 window.addEventListener('DOMContentLoaded', () => {
   rebuildNav();
   initThemeToggle();
+  initHeaderAnimation();
+  initScrollReveal();
+  initVideoCarousel();
 });
 
 // export for debugging

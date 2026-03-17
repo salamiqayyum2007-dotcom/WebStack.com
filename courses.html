@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Courses - WebStack</title>
+  <title>Courses</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,148 +15,92 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-     
+        <p>Your learning hub</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="courses.html" class="active">Courses</a>
-        <a href="tutorials.html">Tutorials</a>
-       
-          <a href="profile.html">👤 My Profile</a>
-        <a href="index.html" class="auth-btn">Logout</a>
-      </nav>
+      
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
+  
     </div>
   </header>
 
-  <main class="content">
-    <h1 style="text-align: center; margin-bottom: 1rem; color: #333;">All Courses</h1>
-    <div style="text-align:center; margin-bottom: 2rem;">
-      <input type="text" id="course-search" placeholder="Search courses..." style="padding:0.5rem 1rem; width:300px; max-width:90%; border:1px solid #ccc; border-radius:4px;" />
-    </div>
-    
-    <section class="course" id="html">
-      <h2>🌐 HTML - Fundamentals</h2>
-      <p><strong>Level:</strong> Beginner | <strong>Duration:</strong> 4 weeks</p>
-      <p>Learn the structure of the web. Master HTML5 tags, semantic elements, forms, and best practices. This course covers everything you need to know to create well-structured web pages.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-       
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Courses</h2>
+        <p>Pick a learning path and start building real projects today.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#web3">Web3</a>
+          <a class="btn btn-secondary" href="#frontend">Frontend</a>
+          <a class="btn btn-secondary" href="#backend">Backend</a>
+        </div>
       </div>
     </section>
 
-    <section class="course" id="css">
-      <h2>🎨 CSS - Styling & Layout</h2>
-      <p><strong>Level:</strong> Beginner | <strong>Duration:</strong> 6 weeks</p>
-      <p>Style your websites beautifully with CSS. Learn flexbox, CSS Grid, responsive design, animations, and modern layout techniques. Transform your HTML into stunning visual designs.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-       
+    <section class="featured-courses" id="web3">
+      <h2>Featured Courses</h2>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-icon">🧩</div>
+          <h3>Intro to Web3</h3>
+          <p>Learn the fundamentals of blockchain, wallets, and smart contracts.</p>
+          <a class="btn btn-small btn-primary" href="tutorial-start.html">Get Started</a>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">💡</div>
+          <h3>Building Decentralized Apps</h3>
+          <p>Create dApps with crypto wallets, APIs, and real-time data.</p>
+          <a class="btn btn-small btn-primary" href="tutorials.html">View Tutorials</a>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">🛠️</div>
+          <h3>Deploy & Ship</h3>
+          <p>Deploy your applications on Web3 platforms and traditional hosting.</p>
+          <a class="btn btn-small btn-primary" href="enroll.html">Enroll Now</a>
+        </div>
       </div>
-    </section>
-
-    <section class="course" id="javascript">
-      <h2>⚡ JavaScript - Interactive Web</h2>
-      <p><strong>Level:</strong> Intermediate | <strong>Duration:</strong> 8 weeks</p>
-      <p>Make your websites interactive and dynamic. Learn DOM manipulation, events, ES6+ features, async programming, and build real-world projects. Master the language of the web.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-       
-      </div>
-    </section>
-
-    <section class="course" id="react">
-      <h2>⚛️ React - Modern Framework</h2>
-      <p><strong>Level:</strong> Intermediate | <strong>Duration:</strong> 8 weeks</p>
-      <p>Build modern web applications with React. Learn components, hooks, state management, routing, and create scalable single-page applications.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-       
-      </div>
-    </section>
-
-    <section class="course">
-      <h2>🐍 Python - Backend Development</h2>
-      <p><strong>Level:</strong> Intermediate | <strong>Duration:</strong> 10 weeks</p>
-      <p>Learn Python for backend development. Master Django, databases, APIs, and full-stack web development with Python.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-      
-      </div>
-    </section>
-
-    <section class="course">
-      <h2>📦 Web Development Tools</h2>
-      <p><strong>Level:</strong> Intermediate | <strong>Duration:</strong> 4 weeks</p>
-      <p>Master Git, GitHub, npm, webpack, and other essential development tools. Learn version control and project management workflows.</p>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-        <a class="btn btn-primary" href="enroll.html" style="margin-top: 0;">Enroll Now</a>
-       
     </section>
   </main>
 
+  
   <footer>
-   
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  
 
   <script src="site.js"></script>
-  <script>
-    // enrollment logic & search
-    document.addEventListener('DOMContentLoaded', () => {
-      const user = getCurrentUser();
-      document.querySelectorAll('.course').forEach(sec => {
-        const courseId = sec.id;
-        const btn = sec.querySelector('a.btn-primary');
-        if (!btn) return;
-        if (user && user.enrolled && user.enrolled.includes(courseId)) {
-          btn.textContent = 'Enrolled';
-          btn.href = '#';
-          btn.style.pointerEvents = 'none';
-          btn.style.opacity = '0.6';
-        } else {
-          btn.addEventListener('click', async e => {
-            if (!user) {
-              e.preventDefault();
-              window.location.href = 'login.html';
-              return;
-            }
-            e.preventDefault();
-            const res = await apiRequest('/api/enroll', {
-              method: 'POST',
-              body: { userId: user.id, courseId }
-            });
-            const data = await res.json();
-            if (data.success) {
-              btn.textContent = 'Enrolled';
-              btn.style.pointerEvents = 'none';
-              btn.style.opacity = '0.6';
-              // update local copy
-              user.enrolled = data.enrolled;
-              saveCurrentUser(user);
-            } else {
-              alert(data.error || 'Failed to enroll');
-            }
-          });
-        }
-      });
-
-      const searchInput = document.getElementById('course-search');
-      if (searchInput) {
-        searchInput.addEventListener('input', () => {
-          const term = searchInput.value.toLowerCase();
-          document.querySelectorAll('.course').forEach(sec => {
-            const text = sec.textContent.toLowerCase();
-            sec.style.display = text.includes(term) ? '' : 'none';
-          });
-        });
-      }
-    });
-  </script>
 </body>
 </html>

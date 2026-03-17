@@ -1,40 +1,40 @@
-Getting started — OAuth and password reset
+Getting started — local auth + password reset
 
-This project includes front-end helpers and a small demo backend to support:
+This project includes a small demo backend that supports:
 
-- Sign in with Google and GitHub using Firebase Auth (client-side)
-- "Forgot password" flow that can either use Firebase's reset email or a small Node server that sends a numeric code
+- Email/password sign in using the built-in `/api/login` endpoint
+- "Forgot password" flow via a small Node server that sends a numeric code to the user's email
 
 Quick setup
 
-1. Firebase (recommended for OAuth):
-   - Create a Firebase project at https://console.firebase.google.com
-   - In "Authentication" enable Google and GitHub providers. For GitHub you must register an OAuth app on GitHub and paste the Client ID/Secret into Firebase.
-   - Add your web app and copy the Firebase config object.
-   - In `login.html` before the `auth.js` script, set `window.FIREBASE_CONFIG = { ... }` with your config.
-
-2. Optional: Run the reset-code server (to send numeric codes via SMTP):
+1. Run the server (for auth + reset code email sending):
    - Node 16+ installed
    - cd server
-   - copy `.env.example` to `.env` and fill SMTP credentials
+   - copy `.env.example` to `.env` and fill SMTP credentials (if you want email)
    - npm install
    - npm start
-   - In your page (before `auth.js`) set `window.RESET_SERVER_URL = 'http://localhost:3000'`
+
+2. Open the frontend (either via a static server or directly in the browser):
+   - Ensure the server is running on port 3000 (default)
+   - The frontend sends API requests to `http://localhost:3000` by default
+
+   **Important:** the frontend sends requests to the server on port 3000. If that process isn’t running or you’re opening the HTML files via `file://`, `fetch` requests will fail and you’ll see a “Network error during registration/login” alert. Make sure to start the server (`cd server && npm start`).
+
+> ⚠️ `server/db.sqlite` is added to `.gitignore` so it won’t be checked into source control.
 
 How it works
 
-- Clicking "Google" or "GitHub" calls Firebase sign-in popups. On success the user is redirected to `dashboard.html`.
-- "Forgot password" -> enter email -> click "Send code". If a `RESET_SERVER_URL` is configured the server will email a numeric code. Otherwise, Firebase's password reset email/link will be used.
-- After receiving the code, enter it with a new password and click "Verify & Update". The client will call `/verify-reset-code` on the reset server; on success the client updates demo localStorage account if present. For a real site, implement password update in the server against your user database.
+- Login uses email/password via `/api/login`. A successful login stores the user in localStorage and redirects to `dashboard.html`.
+- "Forgot password" → enter email → click "Send code". The server sends a numeric reset code to that email.
+- After receiving the code, enter it with a new password and click "Verify & Update". The client calls `/verify-reset-code`, and on success you can log in with the updated password.
 
 Security notes
 
-- This server demo stores codes in memory and is only suitable for testing. Use a persistent store with expirations (Redis) for production and rate-limit requests.
-- Always hash passwords before storing them. The demo does not manage a user DB — integrate the `/verify-reset-code` endpoint to update your real users.
+- This server demo stores codes in the database and is only suitable for testing. Use a persistent store with expirations (Redis) for production and rate-limit requests.
+- Always hash passwords before storing them. The demo does not enforce hashing — integrate `/verify-reset-code` and `/api/register` with your real user database for production.
 
 Files added
 
-- `auth.js` — client-side helpers for OAuth and reset flows
 - `site.js` — shared frontend utilities (nav, auth helpers, API wrapper, theme toggle)
 - `server/index.js` — Express API handling users, courses, enrollments, exercise progress, leaderboard, and reset codes
 - `server/package.json`, `.env.example` — server setup

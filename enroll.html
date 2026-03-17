@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enroll in Course - WebStack</title>
+  <title>Enroll</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,142 +15,54 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-       
+        <p>Your learning hub</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        
-        <a href="courses.html">Courses</a>
-        <a href="tutorials.html">Tutorials</a>
-        <a href="exercises.html">Exercises</a>
-        <a href="profile.html">👤 My Profile</a>
-      </nav>
+      
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
+  
     </div>
   </header>
 
   <main>
-    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 3rem 2rem; text-align: center;">
-      <h1 style="font-size: 2rem; margin-bottom: 1rem;">Complete Your Enrollment</h1>
-      <p style="opacity: 0.95;">Choose your course and get started today</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Enroll in a Course</h2>
+        <p>Select your path and start building the projects that matter.</p>
+      </div>
     </section>
 
-    <div class="enroll-container">
-      <div class="enroll-grid">
-        
-        <!-- Course Selection -->
-        <div>
-          <h2 style="color: #333; margin-bottom: 1.5rem;">Select Your Course</h2>
-          
-          <div class="card">
-            <form onsubmit="handleEnrollment(event)">
-              <div class="form-group" style="margin: 0;">
-                <label for="course-select" style="padding: 1.5rem 1.5rem 0.5rem 1.5rem; display: block;">Course</label>
-                <select id="course-select" name="course" required onchange="updateCourseDetails()" class="form-control">
-                  <option value="">-- Select a Course --</option>
-                </select>
-              </div>
-
-              <div class="form-group" style="margin: 0;">
-                <label for="course-duration" style="padding: 0.5rem 1.5rem 0; display: block; color: #666; font-size: 0.85rem;">Duration</label>
-                <p id="course-duration" style="padding: 0 1.5rem; margin: 0.5rem 0 1.5rem 0; color: #333; font-weight: 500;">Select a course</p>
-              </div>
-
-              <hr style="margin: 0; border: none; border-top: 1px solid #e0e0e0;">
-
-              <div class="card-body">
-                <label for="user-email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Email Address</label>
-                <input type="email" id="user-email" name="email" required placeholder="your@email.com" class="form-control">
-
-                <label for="payment-method" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 500;">Payment Method</label>
-                <select id="payment-method" name="payment" required class="form-control">
-                  <option value="">-- Select Payment Method --</option>
-                  <option value="credit">Credit Card</option>
-                  <option value="debit">Debit Card</option>
-                  <option value="paypal">PayPal</option>
-                  <option value="google">Google Pay</option>
-                </select>
-
-                <label style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
-                  <input type="checkbox" id="terms-agree" name="terms" required style="width: auto; margin-right: 0.5rem; margin-top: 0.25rem;">
-                  <span style="color: #666; font-size: 0.9rem;">I agree to the <a href="terms.html" style="color: #2563eb; text-decoration: none;">Terms of Service</a> and <a href="privacy.html" style="color: #2563eb; text-decoration: none;">Privacy Policy</a></span>
-                </label>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Complete Enrollment</button>
-              </div>
-            </form>
-          </div>
+    <section class="featured-courses">
+      <h2>Choose a Track</h2>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-icon">🔒</div>
+          <h3>Beginner Web</h3>
+          <p>Start with HTML, CSS, and JavaScript fundamentals.</p>
+          <a class="btn btn-small btn-primary" href="courses.html">Enroll Now</a>
         </div>
-
-        <!-- Enrollment Summary -->
-        <div>
-          <h2 style="color: #333; margin-bottom: 1.5rem;">Enrollment Summary</h2>
-          
-          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 2rem; margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
-              <div>
-                <h3 id="summary-course" style="color: #333; margin: 0 0 0.5rem 0;">HTML Fundamentals</h3>
-                <p id="summary-duration" style="color: #666; margin: 0; font-size: 0.9rem;">4 weeks • 20 lessons</p>
-              </div>
-              <div style="text-align: right;">
-                <p id="summary-price" style="color: #2563eb; font-size: 1.5rem; font-weight: bold; margin: 0;">$29</p>
-              </div>
-            </div>
-
-            <div style="margin-bottom: 1.5rem;">
-              <h4 style="color: #333; margin-bottom: 1rem;">What's Included:</h4>
-              <ul style="color: #666; margin: 0; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">📺 Video lessons and tutorials</li>
-                <li style="margin-bottom: 0.5rem;">📝 Downloadable resources and code files</li>
-                <li style="margin-bottom: 0.5rem;">✅ Practice exercises and quizzes</li>
-                <li style="margin-bottom: 0.5rem;">🏆 Certificate of completion</li>
-                <li style="margin-bottom: 0.5rem;">💬 Community forum access</li>
-                <li>📱 Mobile app access</li>
-              </ul>
-            </div>
-
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e0e0e0;">
-
-            <div style="background: #f9fafb; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span style="color: #666;">Subtotal</span>
-                <span id="subtotal" style="color: #333; font-weight: 500;">$29</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span style="color: #666;">Tax</span>
-                <span id="tax" style="color: #333; font-weight: 500;">$0</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid #e0e0e0;">
-                <span style="color: #333; font-weight: bold;">Total</span>
-                <span id="total" style="color: #2563eb; font-weight: bold; font-size: 1.2rem;">$29</span>
-              </div>
-            </div>
-
-            <div style="background: #e0e7ff; border-left: 4px solid #2563eb; padding: 1rem; border-radius: 4px;">
-              <p style="color: #0c4a6e; margin: 0; font-size: 0.9rem;">
-                <strong>💡 Money-back guarantee:</strong> Not satisfied? Get a full refund within 30 days.
-              </p>
-            </div>
-          </div>
-
-          <!-- Requirements -->
-          <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 2rem;">
-            <h4 style="color: #333; margin-bottom: 1rem;">Requirements:</h4>
-            <ul style="color: #666; margin: 0; padding-left: 1.5rem;">
-              <li style="margin-bottom: 0.5rem;">✓ Internet connection</li>
-              <li style="margin-bottom: 0.5rem;">✓ Web browser (Chrome, Firefox, Safari, Edge)</li>
-              <li style="margin-bottom: 0.5rem;">✓ Code editor (VS Code recommended)</li>
-              <li>✓ 5-10 hours per week commitment</li>
-            </ul>
-          </div>
+        <div class="course-card">
+          <div class="course-icon">🧠</div>
+          <h3>Web3 Essentials</h3>
+          <p>Learn blockchain basics, wallets, and smart contracts.</p>
+          <a class="btn btn-small btn-primary" href="courses.html">Enroll Now</a>
+        </div>
+        <div class="course-card">
+          <div class="course-icon">☁️</div>
+          <h3>Deploy & Scale</h3>
+          <p>Deploy apps and scale them using modern cloud tools.</p>
+          <a class="btn btn-small btn-primary" href="courses.html">Enroll Now</a>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
+  
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -158,10 +70,9 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="team.html">Our Team</a></li>
-          <li><a href="#careers">Careers</a></li>
+          <li><a href="#">Careers</a></li>
         </ul>
       </div>
-      
       <div class="footer-section">
         <h4>Legal</h4>
         <ul>
@@ -183,85 +94,8 @@
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  
 
   <script src="site.js"></script>
-  <script>
-    let courseDetails = {}; // will be populated from server
-
-    };
-
-    function updateCourseDetails() {
-      const courseSelect = document.getElementById('course-select').value;
-      
-      if (courseSelect && courseDetails[courseSelect]) {
-        const course = courseDetails[courseSelect];
-        document.getElementById('course-duration').textContent = course.duration;
-        document.getElementById('summary-course').textContent = course.name;
-        document.getElementById('summary-duration').textContent = course.duration;
-        document.getElementById('summary-price').textContent = '$' + course.price;
-        document.getElementById('subtotal').textContent = '$' + course.price;
-        document.getElementById('total').textContent = '$' + course.price;
-      }
-    }
-
-    async function handleEnrollment(event) {
-      event.preventDefault();
-      const course = document.getElementById('course-select').value;
-      const emailField = document.getElementById('user-email');
-      const email = emailField.value;
-      const user = getCurrentUser();
-      if (!user) {
-        alert('Please log in before enrolling');
-        window.location.href = 'login.html';
-        return;
-      }
-      if (course) {
-        try {
-          const res = await apiRequest('/api/enroll', {
-            method: 'POST',
-            body: { userId: user.id, courseId: course }
-          });
-          const data = await res.json();
-          if (data.success) {
-            user.enrolled = data.enrolled;
-            saveCurrentUser(user);
-            const courseName = courseDetails[course].name;
-            alert(`🎉 Enrollment Successful!\n\nCourse: ${courseName}\nEmail: ${user.email}`);
-            window.location.href = 'courses.html';
-          } else {
-            alert(data.error || 'Enrollment failed');
-          }
-        } catch (err) {
-          console.error(err);
-          alert('Network error during enrollment');
-        }
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', async () => {
-      // prefill email if logged in
-      const user = getCurrentUser();
-      if (user) {
-        document.getElementById('user-email').value = user.email;
-      }
-      // load courses from API
-      try {
-        const res = await apiRequest('/api/courses');
-        if (res.ok) {
-          const courses = await res.json();
-          const select = document.getElementById('course-select');
-          courses.forEach(c => {
-            const opt = document.createElement('option');
-            opt.value = c.id;
-            opt.textContent = `${c.title} - $${c.price || 0}`;
-            select.appendChild(opt);
-            courseDetails[c.id] = { name: c.title, duration: c.duration || '', price: c.price || 0 };
-          });
-        }
-      } catch (e) {
-        console.warn('failed to load courses', e);
-      }
-    });
-  </script>
 </body>
 </html>

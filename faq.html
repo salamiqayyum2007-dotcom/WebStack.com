@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ - WebStack</title>
+  <title>FAQ</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,149 +15,43 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-     
+        <p>Your learning hub</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="tutorials.html">Tutorials</a>
-        <a href="exercises.html">Exercises</a>
-        <a href="login.html" class="auth-btn">Login</a>
-        <a href="register.html" class="auth-btn register-btn">Sign Up</a>
-      </nav>
+      
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
+  
     </div>
   </header>
 
   <main>
-    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 3rem 2rem; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Frequently Asked Questions</h1>
-      <p style="font-size: 1.1rem; opacity: 0.95;">Find answers to common questions about WebStack courses and platform</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about learning, courses, and account setup.</p>
+      </div>
     </section>
 
-    <div style="max-width: 900px; margin: 0 auto; padding: 3rem 2rem;">
-      
-      <!-- General Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">General Questions</h2>
-      
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">What is WebStack?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">WebStack is an online learning platform dedicated to teaching web development. We offer comprehensive courses, tutorials, exercises, and a supportive community for aspiring developers of all levels.</p>
-      </details>
+    <section class="content">
+      <div class="content-inner">
+        <h3>How do I start a course?</h3>
+        <p>Head to the Courses page, pick a track, and click “Get Started.”</p>
 
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Who is WebStack for?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">WebStack is for anyone interested in learning web development, from complete beginners to experienced developers looking to upskill. Our courses are designed to accommodate all skill levels.</p>
-      </details>
+        <h3>Do I need an account?</h3>
+        <p>An account helps you track progress and save work. You can also explore without logging in.</p>
 
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Do I need any prior coding experience?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">No! Our beginner courses are designed specifically for people with zero coding experience. We start from the fundamentals and progress at a comfortable pace.</p>
-      </details>
-
-      <!-- Courses Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">Courses & Content</h2>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">How long does it take to complete a course?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Course duration varies depending on the course and your pace. Most courses take 4-10 weeks if you dedicate 5-10 hours per week. However, you can complete courses at your own pace.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Can I access course materials after I enroll?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Yes! Once you enroll, you have lifetime access to all course materials, including videos, code files, and resources. You can download them for offline access.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Can I take multiple courses at once?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Absolutely! You can enroll in multiple courses simultaneously and learn at your own pace. However, we recommend focusing on one course at a time to get the most value.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Are the courses up-to-date with current technologies?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Yes! We regularly update our courses to reflect the latest web development trends and technologies. Our instructors work in the industry and keep content current.</p>
-      </details>
-
-      <!-- Payment & Refunds Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">Payment & Refunds</h2>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">What payment methods do you accept?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">We accept credit cards (Visa, Mastercard, American Express), debit cards, PayPal, Google Pay, and Apple Pay. All payments are processed securely.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Do you offer a refund guarantee?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Yes! We offer a 30-day money-back guarantee on all courses. If you're not satisfied for any reason, contact us within 30 days for a full refund. No questions asked.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Are there any discounts available?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Yes! We frequently offer discounts and special promotions. Subscribe to our newsletter or follow us on social media to stay updated on current deals.</p>
-      </details>
-
-      <!-- Technical Support Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">Technical Support</h2>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">What if I get stuck on a lesson?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">We have multiple resources to help: community forums where you can ask questions, detailed documentation, and often supplementary videos. You can also contact our support team directly.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">What are the system requirements?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">You need a modern web browser (Chrome, Firefox, Safari, or Edge), an internet connection, and a code editor like VS Code. Most courses work on Mac, Windows, and Linux.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">How long is the response time for support?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">We typically respond to support inquiries within 24 hours during business days. For urgent issues, you can reach our team at support@webstack.com or use the contact form.</p>
-      </details>
-
-      <!-- Certificates Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">Certificates</h2>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Do I get a certificate after completing a course?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Yes! Upon successful completion of any course, you'll earn a shareable certificate that you can add to your resume and LinkedIn profile.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Are WebStack certificates recognized by employers?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">WebStack certificates demonstrate real skills and knowledge. While they're not university degrees, they show potential employers that you have completed serious coursework in web development and are dedicated to learning.</p>
-      </details>
-
-      <!-- Account Section -->
-      <h2 style="color: #333; margin: 2rem 0 1.5rem 0; padding-bottom: 0.75rem; border-bottom: 2px solid #2563eb;">Account & Registration</h2>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">Can I use one account for multiple users?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">No, each person should have their own account. Sharing login credentials violates our terms of service. Each account costs only a fraction of typical bootcamp tuitions.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">How do I reset my password?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">Go to the login page and click "Forgot Password". Follow the instructions sent to your email to reset your password securely.</p>
-      </details>
-
-      <details style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <summary style="color: #2563eb; font-weight: 600; font-size: 1.05rem;">How do I delete my account?</summary>
-        <p style="color: #666; margin: 1rem 0 0 0; line-height: 1.8;">You can delete your account from your profile settings under "Danger Zone". Please note that this action is permanent and will delete all your data.</p>
-      </details>
-
-      <!-- Contact CTA -->
-      <div style="margin-top: 3rem; padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-        <h3 style="color: #333; margin-bottom: 0.5rem;">Didn't find your answer?</h3>
-        <p style="color: #666; margin-bottom: 1.5rem;">Our support team is here to help!</p>
-        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        <h3>Can I contribute tutorials?</h3>
+        <p>Yes! Reach out via the Contact page and we’ll share how to contribute.</p>
       </div>
-    </div>
+    </section>
   </main>
 
+  
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -165,15 +59,7 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="team.html">Our Team</a></li>
-          <li><a href="#careers">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="tutorials.html">Tutorials</a></li>
-          <li><a href="exercises.html">Exercises</a></li>
+          <li><a href="#">Careers</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -197,23 +83,8 @@
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  
 
   <script src="site.js"></script>
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>

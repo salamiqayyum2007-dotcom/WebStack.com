@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - WebStack</title>
+  <title>About WebStack</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     const theme = localStorage.getItem('theme') || 'light';
@@ -15,156 +15,83 @@
     <div class="header-container">
       <div class="logo">
         <h1><a href="index.html">WebStack</a></h1>
-        
+        <p>Your learning hub</p>
       </div>
-      <button class="hamburger-menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="index.html">Home</a>
- 
-      </nav>
+      
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu"></nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙 Dark</button>
+  
     </div>
   </header>
 
   <main>
-    <section style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 4rem 2rem; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">About WebStack</h1>
-      <p style="font-size: 1.1rem; opacity: 0.95;">Empowering the next generation of web developers</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>About WebStack</h2>
+        <p>WebStack is a hands-on learning platform for modern web and Web3 development.</p>
+      </div>
     </section>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-      <!-- Mission Section -->
-      <section style="margin-bottom: 4rem; padding: 3rem 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-        <h2 style="color: #333; margin-bottom: 1.5rem; font-size: 2rem;">🎯 Our Mission</h2>
-        <p style="color: #666; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-          At WebStack, we believe that quality education in web development should be accessible to everyone, regardless of their background or location. Our mission is to provide comprehensive, affordable, and engaging learning resources that empower individuals to build successful careers in web development.
-        </p>
-        <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
-          We're committed to bridging the gap between traditional education and industry needs, ensuring our students are equipped with the latest skills and knowledge required in today's fast-paced tech industry.
-        </p>
-      </section>
-
-      <!-- Vision Section -->
-      <section style="margin-bottom: 4rem; padding: 3rem 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-        <h2 style="color: #333; margin-bottom: 1.5rem; font-size: 2rem;">🌟 Our Vision</h2>
-        <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
-          We envision a world where anyone, anywhere can learn web development and build amazing digital experiences. By 2030, we aim to have trained over 1 million developers globally, creating a more inclusive and diverse tech community.
-        </p>
-      </section>
-
-      <!-- Values Section -->
-      <section style="margin-bottom: 4rem;">
-        <h2 style="color: #333; margin-bottom: 2rem; text-align: center; font-size: 2rem;">💡 Our Core Values</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
-            <h3 style="color: #2563eb;">Quality Education</h3>
-            <p style="color: #666;">We create rigorous, well-structured courses taught by industry experts.</p>
-          </div>
-
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
-            <h3 style="color: #2563eb;">Community Focus</h3>
-            <p style="color: #666;">We foster a supportive community where learners help each other succeed.</p>
-          </div>
-
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔄</div>
-            <h3 style="color: #2563eb;">Continuous Innovation</h3>
-            <p style="color: #666;">We constantly update content to reflect the latest web development trends.</p>
-          </div>
-
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">♿</div>
-            <h3 style="color: #2563eb;">Accessibility</h3>
-            <p style="color: #666;">We make quality education affordable and accessible to all learners.</p>
-          </div>
-
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
-            <h3 style="color: #2563eb;">Practical Learning</h3>
-            <p style="color: #666;">We emphasize hands-on projects and real-world applications.</p>
-          </div>
-
-          <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌍</div>
-            <h3 style="color: #2563eb;">Global Impact</h3>
-            <p style="color: #666;">We aim to create a positive impact on the global developer community.</p>
-          </div>
+    <section class="benefits">
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">🚀</div>
+          <h3>Learn by Building</h3>
+          <p>Follow guided projects that take you from zero to shipped apps.</p>
         </div>
-      </section>
-
-      <!-- Stats Section -->
-      <section style="margin-bottom: 4rem; background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 3rem 2rem; border-radius: 8px;">
-        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">By The Numbers</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
-          <div>
-            <h3 style="font-size: 2.5rem; margin: 0;">500K+</h3>
-            <p style="margin: 0.5rem 0 0 0;">Active Learners</p>
-          </div>
-          <div>
-            <h3 style="font-size: 2.5rem; margin: 0;">50+</h3>
-            <p style="margin: 0.5rem 0 0 0;">Courses Available</p>
-          </div>
-          <div>
-            <h3 style="font-size: 2.5rem; margin: 0;">1000+</h3>
-            <p style="margin: 0.5rem 0 0 0;">Total Lessons</p>
-          </div>
-          <div>
-            <h3 style="font-size: 2.5rem; margin: 0;">95%</h3>
-            <p style="margin: 0.5rem 0 0 0;">Success Rate</p>
-          </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🧠</div>
+          <h3>Modern Skills</h3>
+          <p>Build real-world web apps using industry-standard tools and frameworks.</p>
         </div>
-      </section>
-
-      <!-- History Section -->
-      <section style="padding: 3rem 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-        <h2 style="color: #333; margin-bottom: 2rem; text-align: center; font-size: 2rem;">📖 Our Story</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-          <p style="color: #666; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-            WebStack was founded in 2024 by a group of passionate web developers who realized there was a gap in online education. While many platforms existed, none truly combined comprehensive content, practical projects, and supportive communities in an accessible way.
-          </p>
-          <p style="color: #666; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-            Starting with just 5 courses and a handful of students, we've grown to serve hundreds of thousands of learners worldwide. Each course is carefully crafted by industry professionals with years of real-world experience.
-          </p>
-          <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
-            Today, WebStack is one of the fastest-growing online learning platforms for web development, with a mission to democratize tech education and create opportunities for people everywhere.
-          </p>
+        <div class="benefit-item">
+          <div class="benefit-icon">🤝</div>
+          <h3>Community Driven</h3>
+          <p>Learn with peers, share progress, and get feedback from the community.</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
+  
   <footer>
-   
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#twitter">Twitter</a></li>
+          <li><a href="#facebook">Facebook</a></li>
+          <li><a href="#github">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2026 WebStack. All rights reserved.</p>
     </div>
   </footer>
+  
 
   <script src="site.js"></script>
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-  </script>
-</body>
-</html>
-    </div>
-  </footer>
 </body>
 </html>

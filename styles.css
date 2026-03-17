@@ -1,3 +1,14 @@
+:root {
+  --bg: #0b0f1a;
+  --surface: rgba(255,255,255,0.06);
+  --surface-2: rgba(255,255,255,0.10);
+  --text: #f1f5f9;
+  --muted: rgba(241, 245, 249, 0.75);
+  --primary: #3b82f6;
+  --primary-2: #60a5fa;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,15 +17,64 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 60%),
+              radial-gradient(circle at bottom, rgba(99, 102, 241, 0.12), transparent 55%),
+              #050812;
+  color: var(--text);
   line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: transform, opacity;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.button-animated {
+  animation: pulse 2.2s ease-in-out infinite;
 }
 
 /* Header & Navigation */
 header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -24,10 +84,24 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  position: relative; /* for absolute-positioned toggle button */
+  position: relative;
+  gap: 1.5rem;
+}
+
+.logo {
+  grid-column: 1;
+}
+
+nav {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.hamburger-menu {
+  grid-column: 3;
 }
 
 .logo {
@@ -43,36 +117,37 @@ header {
 
 .logo h1 a {
   text-decoration: none;
-  color: #2563eb;
+  color: var(--text);
 }
 
 .logo p {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--muted);
   margin: 0;
-  
 }
 
 nav {
   display: flex;
   gap: 2rem;
   align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 nav a {
-  color: #333;
+  color: var(--text);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 nav a:hover {
-  color: #2563eb;
+  color: var(--primary);
 }
 
 nav a.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 0.5rem;
 }
 
@@ -154,29 +229,104 @@ nav.mobile-menu.active {
   background-color: #1d4ed8;
 }
 
-/* Theme toggle button (added dynamically) */
-#theme-toggle-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 40px;
-  height: 24px;
-  background: #ddd;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+/* Header animation */
+header.header-animated .logo,
+header.header-animated nav,
+header.header-animated .hamburger-menu,
+header.header-animated .theme-toggle {
+  opacity: 1;
+  transform: translateY(0);
 }
-#theme-toggle-btn span {
-  display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #fff;
+
+header .logo,
+header nav,
+header .hamburger-menu,
+header .theme-toggle {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Theme toggle control */
+.theme-toggle {
+  grid-column: 4;
+  justify-self: end;
+  align-self: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text);
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Carousel slider */
+.video-carousel {
   position: relative;
-  left: 2px;
-  top: 2px;
-  transition: left 0.3s;
+  overflow: hidden;
+}
+
+.carousel-window {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+.carousel-btn.prev {
+  left: 0.5rem;
+}
+
+.carousel-btn.next {
+  right: 0.5rem;
+}
+
+.carousel-track > .course-card {
+  min-width: 320px;
+  flex: 0 0 320px;
+}
+
+@media (max-width: 700px) {
+  .carousel-track > .course-card {
+    min-width: 260px;
+    flex: 0 0 260px;
+  }
 }
 
 /* Main Content */
@@ -501,6 +651,63 @@ footer {
   margin-top: 0.25rem;
 }
 
+.form-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: rgba(37, 99, 235, 0.08);
+  color: #111827;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.form-message--success {
+  background: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.form-message--error {
+  background: rgba(185, 28, 28, 0.1);
+  border-color: rgba(185, 28, 28, 0.3);
+}
+
+.form-message--info {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.form-message__icon {
+  font-size: 1.1rem;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 3rem;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  padding: 0.25rem;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -553,7 +760,8 @@ footer {
     display: flex;
   }
 
-  nav {
+  /* Only hide the nav on mobile when there is a hamburger menu to toggle it. */
+  .hamburger-menu + nav {
     display: none;
     position: absolute;
     top: 100%;
@@ -567,7 +775,7 @@ footer {
     width: 100%;
   }
 
-  nav.active {
+  .hamburger-menu + nav.active {
     display: flex;
   }
 
@@ -1067,12 +1275,12 @@ html[data-theme="dark"] footer a:hover {
   color: #93c5fd;
 }
 
-html[data-theme="dark"] button:not(.theme-toggle-btn) {
+html[data-theme="dark"] button:not(.theme-toggle) {
   background-color: #2563eb;
   color: white;
 }
 
-html[data-theme="dark"] button:not(.theme-toggle-btn):hover {
+html[data-theme="dark"] button:not(.theme-toggle):hover {
   background-color: #1d4ed8;
 }
 
