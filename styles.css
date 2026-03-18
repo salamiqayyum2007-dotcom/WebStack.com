@@ -157,7 +157,7 @@ nav a.active {
   flex-direction: column;
   gap: 0.35rem;
   cursor: pointer;
-  background: none;
+  background: black;
   border: none;
   padding: 0;
 }
@@ -165,6 +165,7 @@ nav a.active {
 .hamburger-menu span {
   display: block;
   width: 25px;
+  color: black;
   height: 3px;
   background-color: var(--text-primary);
   border-radius: 2px;
@@ -252,7 +253,7 @@ header .theme-toggle {
   grid-column: 4;
   justify-self: end;
   align-self: center;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 10, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: var(--text);
   padding: 0.5rem 0.7rem;
@@ -262,7 +263,7 @@ header .theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:  0.2s ease, transform 0.2s ease;
 }
 
 .theme-toggle:hover {
@@ -337,8 +338,8 @@ main {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  color: white;
+  background:  linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: rgb(8, 8, 8);
   padding: 6rem 2rem;
   text-align: center;
 }
@@ -346,6 +347,7 @@ main {
 .hero-content h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .hero-content p {
@@ -367,7 +369,7 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   padding: 3rem 2rem;
-  background-color: white;
+  background-color: rgb(18, 18, 19);
 }
 
 .stat-card {
@@ -434,14 +436,14 @@ main {
 /* Featured Courses */
 .featured-courses {
   padding: 4rem 2rem;
-  background-color: white;
+  background-color: rgb(10, 10, 10);
 }
 
 .featured-courses h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 3rem;
-  color: #333;
+  color: #ffffff;
 }
 
 .course-grid {
@@ -451,12 +453,12 @@ main {
 }
 
 .course-card {
-  background: white;
+  background: rgb(10, 10, 10);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
-  transition: all 0.3s;
+  transition: all 0.2s;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -467,24 +469,25 @@ main {
 }
 
 .course-icon {
-  font-size: 3rem;
   margin-bottom: 1rem;
+  font-size: 3rem;
+  justify-content: center;
 }
 
 .course-card h3 {
-  color: #333;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .course-card p {
-  color: #666;
+  color: #fffefe;
   margin-bottom: 1.5rem;
 }
 
 /* Benefits Section */
 .benefits {
   padding: 4rem 2rem;
-  background-color: #f9fafb;
+  background-color: #0a0a0a;
 }
 
 .benefits h2 {
